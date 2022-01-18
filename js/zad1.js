@@ -1,6 +1,6 @@
 var tab1 = [7,3,1,6,9,5,4,10,2,2]; //utworzenie tab1
 
-document.write(tab1[4]+"<br>"); //wyswietlenie 5tej komorki
+document.write("&nbsp;&nbsp;"+tab1[4]+"<br>"); //wyswietlenie 5tej komorki
 document.write('<table>');
 tab1[6]=12;  //zmiana wartosci w 7 komorce
 document.write('<tr><td><b>tab1</b></td>  ');
