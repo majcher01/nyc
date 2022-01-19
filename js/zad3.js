@@ -1,6 +1,12 @@
 TablicaDwa = [];  //utworzenie tablicy
 
-
+var input = document.getElementById("inputText2");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   dodaj2();
+  }
+});
 
 function wyczysc2(){    //funkcja czyszczaca tablice
     TablicaDwa=[];
