@@ -1,12 +1,12 @@
 TablicaDwa = [];  //utworzenie tablicy
 
-var input = document.getElementById("inputText2");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   dodaj2();
-  }
-});
+var input = document.getElementById("inputText2");      // oblsuga zatwierdzania enterem
+input.addEventListener("keyup", function(event) {       // oblsuga zatwierdzania enterem
+  if (event.keyCode === 13) {                           // oblsuga zatwierdzania enterem
+   event.preventDefault();                              // oblsuga zatwierdzania enterem
+   dodaj2();                                            // oblsuga zatwierdzania enterem
+  }                                                     // oblsuga zatwierdzania enterem
+});                                                     // oblsuga zatwierdzania enterem
 
 function wyczysc2(){    //funkcja czyszczaca tablice
     TablicaDwa=[];

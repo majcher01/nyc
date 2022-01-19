@@ -1,12 +1,12 @@
 TablicaJeden = [];  //utworzenie tablicy
 
-var input = document.getElementById("inputText");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   dodaj();
-  }
-})
+var input = document.getElementById("inputText");           // obsluga zatwierdzania enterem
+input.addEventListener("keyup", function(event) {           // obsluga zatwierdzania enterem
+  if (event.keyCode === 13) {                               // obsluga zatwierdzania enterem
+   event.preventDefault();                                  // obsluga zatwierdzania enterem
+   dodaj();                                                 // obsluga zatwierdzania enterem
+  }                                                         // obsluga zatwierdzania enterem
+})                                                          // obsluga zatwierdzania enterem
 
 function wyczysc(){    //funkcja czyszczaca tablice
     TablicaJeden=[];
