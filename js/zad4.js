@@ -134,3 +134,6 @@ function dodaj4()    //funkcja dodajaca elementy do tablicy
   
   
 }
+
+
+// Jakub Majcherski 2022

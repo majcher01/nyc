@@ -57,3 +57,6 @@ function koniec2(){
         document.getElementById('output2').innerHTML+='<br> Tablica w losowej kolejności: <br>'+TablicaDwa.join(", ");
     }
 }
+
+
+// Jakub Majcherski 2022

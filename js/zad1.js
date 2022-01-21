@@ -36,3 +36,6 @@ for(var i=0;i<tab1.length;i++){
 }
 document.write('</tr></table>');
 
+
+// Jakub Majcherski 2022
+
