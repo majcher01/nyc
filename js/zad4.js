@@ -11,9 +11,11 @@ let sort = liczby.sort(function(a, b){return a - b});       //sortowanie tablicy
 let max = sort[99];                                         //znalezienie maxa
 let min = sort[0];
 let desc = sort.reverse();
+let x=0;
 let suma = 0;
-let countermax=0;                                           //deklaracja zmiennych
+let countermax=0, counter3=0;                                           //deklaracja zmiennych
 let parzyste=[], nieparzystyindeks=[], przedzial515=[], najmniejszaiobok=[], wieksze10=[], nowatablica=[];     //deklaracja zmiennych
+x=sort[0];
 for(var i=0;i<liczby.length;i++){   
     if(liczby[i]==max){                         //liczenie wystapien najwiekszej liczby
         countermax++;
@@ -39,11 +41,20 @@ suma+=liczby[i]
 }
 for (var i=0;i<liczby.length;i++){nowatablica[i]=suma;}
 
+for(var i=1;i<liczby.length;i++){
+  if(sort[i]==x){
+    counter3++;
+    console.log(counter3);
+  }else if(sort[i]!=x && counter3<3){
+    x=sort[i];
+  }
+}
 
 console.log(przedzial515);              
 console.log(liczby);
-console.log(suma)
-console.log(wymieszane)
+console.log(suma);
+console.log('c'+counter3);
+console.log('x'+x);
 
 
 
@@ -60,6 +71,11 @@ document.getElementById('output4').innerHTML+="<br><br> najmniejsza liczba: "+na
 document.getElementById('output4').innerHTML+='<br><br> liczby wieksze od 10:<br>'+wieksze10.join(', ');
 document.getElementById('output4').innerHTML+='<br><br> nowa tablica (zrozumialem tak ze w kazdej komorce ma byc suma wszystkich z poprzedniej tablicy)<br>'+nowatablica.join(', ')+'<br><br> tablica posortowana malejaco: <br>'+desc.join(', ');
 
+if(counter3==3){
+  document.getElementById('output4').innerHTML+='<br><br> liczba wystepujaca w tablicy 3 razy: '+x;
+}else{
+  document.getElementById('output4').innerHTML+='<br><br> nie ma liczby wystepujacej 3 razy';
+}
 
 
 // obsluga wprowadzania liczby przez uzytkownika i szukania najblizszej
