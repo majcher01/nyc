@@ -50,7 +50,7 @@ function getOccurrence(array, value) {
 
 for(i=0;i<liczby.length;i++){
   x=getOccurrence(liczby, i);
-  if(x==3){
+  if(x>3){
     powtorz3=i;
     break;
   }
@@ -75,7 +75,12 @@ if(przedzial515.length==0){  //if sprawdzajacy czy istnieja liczby w przedziale 
 if(najmniejszaiobok[2]==undefined){najmniejszaiobok[2]="nie ma poprzednika";}
 document.getElementById('output4').innerHTML+="<br><br> najmniejsza liczba: "+najmniejszaiobok[0]+"<br> poprzednia: "+najmniejszaiobok[2]+"<br> nastepna: "+najmniejszaiobok[1];
 document.getElementById('output4').innerHTML+='<br><br> liczby wieksze od 10:<br>'+wieksze10.join(', ');
-document.getElementById('output4').innerHTML+='<br><br> nowa tablica (zrozumialem tak ze w kazdej komorce ma byc suma wszystkich z poprzedniej tablicy)<br>'+nowatablica.join(', ')+'<br><br> tablica posortowana malejaco: <br>'+desc.join(', ')+'<br><br> liczba ';
+document.getElementById('output4').innerHTML+='<br><br> nowa tablica (zrozumialem tak ze w kazdej komorce ma byc suma wszystkich z poprzedniej tablicy)<br>'+nowatablica.join(', ')+'<br><br> tablica posortowana malejaco: <br>'+desc.join(', ');
+if(powtorz3==undefined){
+  document.getElementById('output4').innerHTML+='<br><br> nie ma liczby wystepujacej 3 lub wiecej razy w tablicy.';
+}else{
+  document.getElementById('output4').innerHTML+="<br><br> liczba wystepujaca 3 lub wiecej razy w tablicy to: "+powtorz3;
+}
 
 
 
