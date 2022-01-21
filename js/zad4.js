@@ -9,7 +9,9 @@ for(var i=0;i<100;i++){
 var wymieszane = liczby.sort((a, b) => 0.5 - Math.random());
 let sort = liczby.sort(function(a, b){return a - b});       //sortowanie tablicy
 let max = sort[99];                                         //znalezienie maxa
-let min = sort[0]
+let min = sort[0];
+let desc = sort.reverse();
+let suma = 0;
 let countermax=0;                                           //deklaracja zmiennych
 let parzyste=[], nieparzystyindeks=[], przedzial515=[], najmniejszaiobok=[], wieksze10=[], nowatablica=[];     //deklaracja zmiennych
 for(var i=0;i<liczby.length;i++){   
@@ -31,15 +33,16 @@ for(var i=0;i<liczby.length;i++){
     if(liczby[i]>10){
       wieksze10.push(liczby[i]);                //wpisanie wartosci >10 do nowej tablicy
     }
+suma+=liczby[i]
 
 
 }
-
+for (var i=0;i<liczby.length;i++){nowatablica[i]=suma;}
 
 
 console.log(przedzial515);              
 console.log(liczby);
-console.log(sort)
+console.log(suma)
 console.log(wymieszane)
 
 
@@ -55,7 +58,7 @@ if(przedzial515.length==0){  //if sprawdzajacy czy istnieja liczby w przedziale 
 if(najmniejszaiobok[2]==undefined){najmniejszaiobok[2]="nie ma poprzednika";}
 document.getElementById('output4').innerHTML+="<br><br> najmniejsza liczba: "+najmniejszaiobok[0]+"<br> poprzednia: "+najmniejszaiobok[2]+"<br> nastepna: "+najmniejszaiobok[1];
 document.getElementById('output4').innerHTML+='<br><br> liczby wieksze od 10:<br>'+wieksze10.join(', ');
-
+document.getElementById('output4').innerHTML+='<br><br> nowa tablica (zrozumialem tak ze w kazdej komorce ma byc suma wszystkich z poprzedniej tablicy)<br>'+nowatablica.join(', ')+'<br><br> tablica posortowana malejaco: <br>'+desc.join(', ');
 
 
 
