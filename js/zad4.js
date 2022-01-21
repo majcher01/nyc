@@ -73,7 +73,7 @@ if(przedzial515.length==0){  //if sprawdzajacy czy istnieja liczby w przedziale 
     document.getElementById('output4').innerHTML+="<br><br> liczby należące do przedzialu <5, 15): <br>"+przedzial515.join(', ');
 }
 if(najmniejszaiobok[2]==undefined){najmniejszaiobok[2]="nie ma poprzednika";}
-document.getElementById('output4').innerHTML+="<br><br> najmniejsza liczba: "+najmniejszaiobok[0]+"<br> poprzednia: "+najmniejszaiobok[2]+"<br> nastepna: "+najmniejszaiobok[1];
+document.getElementById('output4').innerHTML+="<br><br> najmniejsza liczba: "+najmniejszaiobok[0]+"<br> poprzednia: "+najmniejszaiobok[1]+"<br> nastepna: "+najmniejszaiobok[2];
 document.getElementById('output4').innerHTML+='<br><br> liczby wieksze od 10:<br>'+wieksze10.join(', ');
 document.getElementById('output4').innerHTML+='<br><br> nowa tablica (zrozumialem tak ze w kazdej komorce ma byc suma wszystkich z poprzedniej tablicy)<br>'+nowatablica.join(', ')+'<br><br> tablica posortowana malejaco: <br>'+desc.join(', ');
 if(powtorz3==undefined){
