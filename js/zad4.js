@@ -6,10 +6,12 @@ for(var i=0;i<100;i++){
     liczby[i]=Math.floor(Math.random() * 500);      //gererowanie 100 losowych liczb i umieszczanie ich w tablicy
 }
 
+var wymieszane = liczby.sort((a, b) => 0.5 - Math.random());
 let sort = liczby.sort(function(a, b){return a - b});       //sortowanie tablicy
 let max = sort[99];                                         //znalezienie maxa
+let min = sort[0]
 let countermax=0;                                           //deklaracja zmiennych
-let parzyste=[], nieparzystyindeks=[], przedzial515=[];     //deklaracja zmiennych
+let parzyste=[], nieparzystyindeks=[], przedzial515=[], najmniejszaiobok=[], wieksze10=[], nowatablica=[];     //deklaracja zmiennych
 for(var i=0;i<liczby.length;i++){   
     if(liczby[i]==max){                         //liczenie wystapien najwiekszej liczby
         countermax++;
@@ -23,12 +25,22 @@ for(var i=0;i<liczby.length;i++){
     if( (liczby[i]>=5) && (liczby[i]<15) ){
         przedzial515.push(liczby[i]);                   //znalezienie liczb z przedziału 5,15
     }
+    if(liczby[i]==min){
+      najmniejszaiobok=[liczby[i],liczby[i+1],liczby[i-1]];   //znalezienie poprzedniej i nastepnej po najmniejszej
+    }
+    if(liczby[i]>10){
+      wieksze10.push(liczby[i]);                //wpisanie wartosci >10 do nowej tablicy
+    }
 
 
 }
 
-console.log(przedzial515);
+
+
+console.log(przedzial515);              
 console.log(liczby);
+console.log(sort)
+console.log(wymieszane)
 
 
 
@@ -40,10 +52,14 @@ if(przedzial515.length==0){  //if sprawdzajacy czy istnieja liczby w przedziale 
 }else{
     document.getElementById('output4').innerHTML+="<br><br> liczby należące do przedzialu <5, 15): <br>"+przedzial515.join(', ');
 }
+if(najmniejszaiobok[2]==undefined){najmniejszaiobok[2]="nie ma poprzednika";}
+document.getElementById('output4').innerHTML+="<br><br> najmniejsza liczba: "+najmniejszaiobok[0]+"<br> poprzednia: "+najmniejszaiobok[2]+"<br> nastepna: "+najmniejszaiobok[1];
+document.getElementById('output4').innerHTML+='<br><br> liczby wieksze od 10:<br>'+wieksze10.join(', ');
 
 
 
 
+// obsluga wprowadzania liczby przez uzytkownika i szukania najblizszej
 
 var input = document.getElementById("inputText4");      // oblsuga zatwierdzania enterem
 input.addEventListener("keyup", function(event) {       // oblsuga zatwierdzania enterem
