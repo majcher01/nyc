@@ -27,5 +27,3 @@ for(var i=0;i<tab2.length;i++){
 }
 
 
-// Jakub Majcherski 2022
-
