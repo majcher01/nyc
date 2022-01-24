@@ -1,6 +1,6 @@
 let tablica = new Array(100);  //utworzenie tablicy
 tablica[0]=0, tablica[1]=1;
-window.onload=function(){
+function zad5(){
 for (var i=2;i<100;i++){
     tablica[i]=(tablica[i-1]+tablica[i-2]); //wypelnienie tablicy ciagiem fibonnaciego
 }
@@ -33,6 +33,3 @@ do{                         //wypenienie tablicy liczbami pierwszymi
 document.getElementById('output6').innerHTML+='<br><br> pierwsze 100 liczb pierwszych:<br>'+tablica.join(', '); //wyswietlenie danych na ekran
   
 }
-
-
-// Jakub Majcherski 2022

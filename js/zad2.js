@@ -100,7 +100,3 @@ document.getElementById('output').innerHTML+='<br> tablica podniesiona do kwadra
 
 }
 }
-
-
-
-// Jakub Majcherski 2022
