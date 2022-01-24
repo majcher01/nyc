@@ -63,7 +63,9 @@ for(i=0;i<liczby.length;i++){
   }
 }
 
+             
 console.log(liczby);
+
 
 
 
