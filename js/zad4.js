@@ -11,7 +11,6 @@ let sort = liczby.sort(function(a, b){return a - b});       //sortowanie tablicy
 let max = sort[99];                                         //znalezienie maxa
 let min = sort[0];
 let desc = sort.reverse();
-let suma = 0;
 let x;
 let powtorz3;
 let countermax=0;                                           //deklaracja zmiennych
@@ -35,13 +34,21 @@ for(var i=0;i<liczby.length;i++){
     if(liczby[i]>10){
       wieksze10.push(liczby[i]);                //wpisanie wartosci >10 do nowej tablicy
     }
-suma+=liczby[i]
 
 
 }
-for (var i=0;i<liczby.length;i++){nowatablica[i]=suma;}
+for (var i=0;i<liczby.length;i++){
+  nowatablica[i]=suma(i);
+}
 
-
+function suma(max){
+  let sm=0, j=0;
+  do {
+    sm=sm+liczby[j];
+    j++;
+  }while(j<(max+1));
+  return sm;
+}
 
 function getOccurrence(array, value) {
   return array.filter((v) => (v === value)).length;
@@ -56,17 +63,14 @@ for(i=0;i<liczby.length;i++){
   }
 }
 
-console.log(powtorz3);
-console.log(przedzial515);              
 console.log(liczby);
-console.log(suma);
 
 
 
 
 
 //wyswietlenie na ekran
-document.getElementById('output4').innerHTML='max: '+max+"<br> wystapienia największej liczby: "+countermax+'<br><br> liczby parzyste: <br>'+parzyste.join(", ")+"<br><br> liczby w nieparzystych indeksach: <br>"+nieparzystyindeks.join(", ");
+document.getElementById('output4').innerHTML='max: '+max+"<br> wystapienia największej liczby: "+countermax+'<br><br> liczby nieparzyste: <br>'+parzyste.join(", ")+"<br><br> liczby w nieparzystych indeksach: <br>"+nieparzystyindeks.join(", ");
 if(przedzial515.length==0){  //if sprawdzajacy czy istnieja liczby w przedziale 5,15
     document.getElementById('output4').innerHTML+="<br><br> nie ma liczb nalezacych do przedzialu <5, 15)";
 }else{
@@ -75,7 +79,7 @@ if(przedzial515.length==0){  //if sprawdzajacy czy istnieja liczby w przedziale 
 if(najmniejszaiobok[2]==undefined){najmniejszaiobok[2]="nie ma poprzednika";}
 document.getElementById('output4').innerHTML+="<br><br> najmniejsza liczba: "+najmniejszaiobok[0]+"<br> poprzednia: "+najmniejszaiobok[1]+"<br> nastepna: "+najmniejszaiobok[2];
 document.getElementById('output4').innerHTML+='<br><br> liczby wieksze od 10:<br>'+wieksze10.join(', ');
-document.getElementById('output4').innerHTML+='<br><br> nowa tablica (zrozumialem tak ze w kazdej komorce ma byc suma wszystkich z poprzedniej tablicy)<br>'+nowatablica.join(', ')+'<br><br> tablica posortowana malejaco: <br>'+desc.join(', ');
+document.getElementById('output4').innerHTML+='<br><br> nowa tablica (całą starą tablice widać w konsoli)<br>'+nowatablica.join(', ')+'<br><br> tablica posortowana malejaco: <br>'+desc.join(', ');
 if(powtorz3==undefined){
   document.getElementById('output4').innerHTML+='<br><br> nie ma liczby wystepujacej 3 lub wiecej razy w tablicy.';
 }else{
@@ -99,7 +103,6 @@ input.addEventListener("keyup", function(event) {       // oblsuga zatwierdzania
 
 
 }
-
 
 
 function dodaj4()    //funkcja dodajaca elementy do tablicy
