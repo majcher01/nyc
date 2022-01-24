@@ -56,10 +56,10 @@ for(i=0;i<liczby.length;i++){
   }
 }
 
-//console.log(powtorz3);
-//console.log(przedzial515);              
-//console.log(liczby);
-//console.log(suma);
+console.log(powtorz3);
+console.log(przedzial515);              
+console.log(liczby);
+console.log(suma);
 
 
 
@@ -134,6 +134,3 @@ function dodaj4()    //funkcja dodajaca elementy do tablicy
   
   
 }
-
-
-// Jakub Majcherski 2022
