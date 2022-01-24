@@ -1,5 +1,5 @@
 let liczby = [];        //deklaracja tablicy
-window.onload=function(){
+function zad4(){
 
 
 for(var i=0;i<100;i++){
@@ -135,5 +135,5 @@ function dodaj4()    //funkcja dodajaca elementy do tablicy
   }
 
   
-  
+
 }
