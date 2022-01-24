@@ -127,15 +127,20 @@ function dodaj4()    //funkcja dodajaca elementy do tablicy
     return (Math.abs(curr - a) < Math.abs(prev - a) ? curr : prev);         //znalezienie najblizszej liczby do wprowadzonej przez uzytkownika
   });
   
-  document.getElementById('output5').innerHTML='liczba najblizej wprowadzonej: '+closest;
-  window.scrollTo({
-    top: 1000,
-    behavior: 'smooth'
-  });
-  
+  document.getElementById('output5').innerHTML='<b>liczba najblizej wprowadzonej: '+closest+'</b>';
+  window.scroll(0,findPos(document.getElementById("output5")));  
   
   }
 
-  
+  function findPos(obj) {
+    var curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+    return [curtop-200];
+    }
+}
+
 
 }
