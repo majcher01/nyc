@@ -5,9 +5,8 @@ function zad5(){
 
     let tablica=elementy.split(" ");
     tablica.length=dlugosc;
-    console.log(tablica);
 
-    document.getElementById("wynik5").innerHTML=tablica.join(", ");
+    document.getElementById("wynik5").innerHTML=tablica.join(", ")+"<br>"+"dlugosc tablicy: "+tablica.length;
 
 
 }
