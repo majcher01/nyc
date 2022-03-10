@@ -12,3 +12,5 @@ document.write("<br> po zmianie: <br>");
 for(var i=0;i<kolory2.length;i++){
     document.write(kolory2[i]+" ");
 }
+
+document.write("<br><br>");
