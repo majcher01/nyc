@@ -6,7 +6,6 @@ function zad4(){
 
 for (var x = 0, ln = list.length; x < ln; x++) {
   setTimeout(function(y) {    
-    console.log(list[y]);
     document.getElementById("interwal").innerHTML+=" "+list[y];
   }, x * 1000, x); // we're passing x
 }
