@@ -15,3 +15,7 @@ for (var x = 0, ln = list.length; x < ln; x++) {
 
 
 }
+
+function wyczysc(){
+    document.getElementById("interwal").innerHTML="";
+}
