@@ -2,12 +2,11 @@
 
 function zad4(){
 
-    let interwal=setInterval(func2, 1000);
-
-    function func2(){
-        var x=1;
-
-        document.getElementById("interwal").innerHTML+=" "+x;
+    var i = 0;
+    while ( i < 10 ) {
+        // This block will be executed 100 times.
+        setInterval(document.getElementById("interwal").innerHTML+=" "+i, 1000);
+        i++; // Increment i
     }
 
 
