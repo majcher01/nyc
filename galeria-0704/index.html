@@ -18,6 +18,17 @@
             document.getElementById("slider").innerHTML=plik;
             setTimeout("zmienslajd()", 5000);
         }
+
+        function zmienslajd2(){
+            numer++;
+            if(numer>7){
+                numer=1;
+            }
+            let plik = "<img src='img/zdjecie"+numer+".jpeg'>";
+            document.getElementById("slider2").innerHTML=plik;
+            setTimeout("zmienslajd2()", 5000);
+            $("#slider2").fadeIn(500);
+        }
     </script>
     <style>
         .srodek{
@@ -26,11 +37,20 @@
         }
     </style>
 </head>
-<body onload="zmienslajd()">
+<body onload="zmienslajd(), zmienslajd2()">
     <div class="srodek">
         <div>
+    <div>
     <h1>siedem cudow natury</h1>
     <div id="slider"></div>
+    </div>
+
+    <div>
+        <h1>siedem cudow natury 2</h1>
+        <div id="slider2"></div>
+        </div>
+
+
     </div>
     </div>
     
