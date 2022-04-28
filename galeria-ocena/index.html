@@ -8,6 +8,8 @@
     <script>
         let numer = Math.floor(Math.random()*20)+1;
         
+        let nazwy = ["", "Dell poweredge", "Dell emc", "Dell poweredge", "Dell poweredge tower", "Kolejny dell poweredge", "Starszy dell", "HP Proliant", "stary HP", "HP MicroServer","HP Proliant tower","macierz HP","HP MicroServer","Supermicro","kolejny supermicro","i jeszcze jeden supermicro","supermicro widok od tylu","jeszcze jeden supermicro","IBM","IMB 2","IBM Tower"];
+        
         function zmienslajd(){
             numer++;
             if(numer>20){
@@ -15,7 +17,9 @@
             }
             let plik = "<img src='img/"+numer+".jpeg'>";
             document.getElementById("slider").innerHTML=plik;
-            setTimeout("zmienslajd()", 5000);
+            setTimeout("zmienslajd()", 2000);
+
+            document.getElementById("podpis").innerHTML=nazwy[numer];
         }
 
         
@@ -30,6 +34,9 @@
 
             background-color: #85FFBD;
 background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
 
         }
 
@@ -48,10 +55,11 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     <div class="srodek">
         <div>
             <div class="galeria">
-                <p>
+                <p style="text-align: center;">
                     Galeria serwerów
                 </p>
                 <p id="slider"></p>
+                <p id="podpis" style="text-align: center; font-size: 18px;"></p>
 
             </div>
         </div>
