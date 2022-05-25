@@ -18,7 +18,7 @@ h1 {
 /* Reset Button */
 #but {
     box-sizing: border-box;
-    width: 95px;
+    width: 200px;
     height: 40px;
     border: 1px solid dodgerblue;
     margin: auto;
