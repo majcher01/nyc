@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+        body{
+            margin: 0px 0px 0px 0px;
+            font-family: 'Oxygen', sans-serif;
+            color: white;
+            background: rgb(1,0,24);
+            background: linear-gradient(90deg, rgba(1,0,24,1) 0%, rgba(85,84,102,1) 100%);
+
+
+        }
+
 h1 {
-    color: orangered;
+    
     font-size: 45px;
 }
 
@@ -9,7 +20,9 @@ h1 {
     width: 80px;
     height: 52px;
     margin: auto;
-    border: 1px solid gray;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
     border-radius: 6px;
     font-size: 30px;
     text-align: center;
