@@ -17,17 +17,23 @@ function showPosition(position) {
   
 $.getJSON(adrespogoda, function(pogoda){
 
+//place
+let place = (pogoda.location.name).replace(/"/g,' ')+", "+(pogoda.location.tz_id).replace(/"/g,' ');
+document.getElementById("loc").innerHTML=place;
+
+
 //current
 let condtext = (pogoda.current.condition.text).replace(/"/g,' ');
 let imgsrc = pogoda.current.condition.icon;
 let cloudval = pogoda.current.cloud;
 
-let tresc1 = condtext + "<img style='margin-left: 40px;' src='https:"+imgsrc+"'>" ;
+let tresc1 = condtext; 
+let curimg = "<img class='curimg' src='https:"+imgsrc+"'>" ;
 let tresc2 = "<span style='margin-right: 20px'>Zachmurzenie: </span>"+cloudval+"%";
 
 //forecast1
 let condtext2 = (pogoda.forecast.forecastday[1].day.condition.text).replace(/"/g,' ');
-let imgsrc2 = pogoda.forecast.forecastday[1].day.condition.icon;
+let imgsrc2 = "https:"+pogoda.forecast.forecastday[1].day.condition.icon;
 let datefor1 = (pogoda.forecast.forecastday[1].date).replace(/"/g,' ');
 
 let tresc3 = "<img src='"+imgsrc2+"'>";
@@ -35,13 +41,14 @@ tresc3 += "<br>"+condtext2+"<br>"+datefor1;
 
 //forecast2
 let condtext3 = (pogoda.forecast.forecastday[2].day.condition.text).replace(/"/g,' ');
-let imgsrc3 = pogoda.forecast.forecastday[2].day.condition.icon;
+let imgsrc3 = "https:"+pogoda.forecast.forecastday[2].day.condition.icon;
 let datefor2 = (pogoda.forecast.forecastday[2].date).replace(/"/g,' ');
 
 let tresc4 = "<img src='"+imgsrc3+"'>";
 tresc4 += "<br>"+condtext3+"<br>"+datefor2;
 
 //write to html elements
+document.getElementById('curimg').innerHTML = curimg;
 document.getElementById('currentweather').innerHTML = tresc1;
 document.getElementById('currentweather2').innerHTML = tresc2;
 

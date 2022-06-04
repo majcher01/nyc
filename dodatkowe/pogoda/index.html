@@ -11,12 +11,30 @@
     <title>Pogoda</title>
 </head>
 <body onload="start()">
-    <div class="header1">
-        Tutaj sprawdzisz prognozę pogody dla wybranego miejsca.
-        <p id="currentweather"></p>
-        <p id="currentweather2"></p>
-        <p id="forecast1"></p>
-        <p id="forecast2"></p>
+    <div class="srodek">
+        <div class="bckg">
+            <div class="header1">
+                Tutaj sprawdzisz prognozę pogody dla swojej aktualnej lokalizacji.
+            </div>
+            <hr style="margin-top: 35px;">
+            <div>
+                <p class="h2">Aktualne warunki dla <span id="loc"></span>:</p>
+            </div>
+            <div style="padding-left: 50px; padding-right:50px;">
+                <span style="float: left; width: 200px;">
+                    <span id="curimg"></span>
+                </span>
+                <span style="float: right; width:600px; background-color: green;">2</span>
+            </div>
+
+
+
+
+
+
+        </div>
     </div>
+
+    <script src="js/wysokosc.js"></script>
 </body>
 </html>
