@@ -26,11 +26,18 @@ document.getElementById("loc").innerHTML=place;
 let condtext = (pogoda.current.condition.text).replace(/"/g,' ');
 let imgsrc = pogoda.current.condition.icon;
 let cloudval = pogoda.current.cloud;
+let wiaterpredkosc = pogoda.current.wind_kph;
+let wiaterkierunek = (pogoda.current.wind_dir).replace(/"/g,' ');
+let cisnienie = pogoda.current.pressure_mb;
+let temp = pogoda.current.temp_c;
+let tempodcz = pogoda.current.feelslike_c;
+let wilgotnosc = pogoda.current.humidity;
+let widzialnosc = pogoda.current.vis_km;
+let update = (pogoda.current.last_updated).replace(/"/g,' ');
 
 let tresc1 = condtext; 
 let curimg = "<img class='curimg' src='https:"+imgsrc+"'>" ;
-let tresc2 = "<span style='margin-right: 20px'>Zachmurzenie: </span>"+cloudval+"%";
-
+let chmurki = cloudval;
 //forecast1
 let condtext2 = (pogoda.forecast.forecastday[1].day.condition.text).replace(/"/g,' ');
 let imgsrc2 = "https:"+pogoda.forecast.forecastday[1].day.condition.icon;
@@ -50,7 +57,21 @@ tresc4 += "<br>"+condtext3+"<br>"+datefor2;
 //write to html elements
 document.getElementById('curimg').innerHTML = curimg;
 document.getElementById('currentweather').innerHTML = tresc1;
-document.getElementById('currentweather2').innerHTML = tresc2;
+document.getElementById('currentweather2').innerHTML = chmurki;
+document.getElementById('wiaterpredkosc').innerHTML = wiaterpredkosc;
+document.getElementById('wiaterkierunek').innerHTML = wiaterkierunek;
+document.getElementById('cisnienie').innerHTML = cisnienie;
+document.getElementById('temp').innerHTML = temp;
+document.getElementById('tempodcz').innerHTML = tempodcz;
+document.getElementById('wilgotnosc').innerHTML = wilgotnosc;
+document.getElementById('widzialnosc').innerHTML = widzialnosc;
+document.getElementById('update').innerHTML = update;
+
+
+
+
+
+
 
 document.getElementById('forecast1').innerHTML = tresc3;
 document.getElementById('forecast2').innerHTML = tresc4;

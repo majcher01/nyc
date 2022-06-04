@@ -17,14 +17,39 @@
                 Tutaj sprawdzisz prognozę pogody dla swojej aktualnej lokalizacji.
             </div>
             <hr style="margin-top: 35px;">
-            <div>
+            <div style="margin-bottom: 40px;">
                 <p class="h2">Aktualne warunki dla <span id="loc"></span>:</p>
             </div>
             <div style="padding-left: 50px; padding-right:50px;">
                 <span style="float: left; width: 200px;">
                     <span id="curimg"></span>
                 </span>
-                <span style="float: right; width:600px; background-color: green;">2</span>
+                <span style="float: right; width:600px;">
+
+                <span style="float: left; width: 300px; line-height: 1.8;">
+                    <span id="currentweather"></span>
+                    <br>
+                    Zachmurzenie: <span id="currentweather2"></span>%
+                    <br>
+                    Prędkość wiatru: <span id="wiaterpredkosc"></span> km/h
+                    <br>
+                    Kierunek wiatru: <span id="wiaterkierunek"></span>
+                    <br>
+                    Ciśnienie: <span id="cisnienie"></span> hPa
+                </span>
+                <span style="float: right; width: 300px; line-height: 1.8;">
+                    Temperatura: <span id="temp"></span> °C
+                    <br>
+                    Temperatura odczuwalna: <span id="tempodcz"></span> °C
+                    <br>
+                    Wilgotność: <span id="wilgotnosc"></span> %
+                    <br>
+                    Widzialność: <span id="widzialnosc"></span> km
+                    <br>
+                    Ostatnia aktualizacja: <span id="update"></span>
+                </span>
+
+                </span>
             </div>
 
 
@@ -35,6 +60,5 @@
         </div>
     </div>
 
-    <script src="js/wysokosc.js"></script>
 </body>
 </html>
