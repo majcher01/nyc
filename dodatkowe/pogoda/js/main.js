@@ -38,13 +38,10 @@ let update = (pogoda.current.last_updated).replace(/"/g,' ');
 let tresc1 = condtext; 
 let curimg = "<img class='curimg' src='https:"+imgsrc+"'>" ;
 let chmurki = cloudval;
-//forecast1
-let condtext2 = (pogoda.forecast.forecastday[1].day.condition.text).replace(/"/g,' ');
-let imgsrc2 = "https:"+pogoda.forecast.forecastday[1].day.condition.icon;
-let datefor1 = (pogoda.forecast.forecastday[1].date).replace(/"/g,' ');
 
-let tresc3 = "<img src='"+imgsrc2+"'>";
-tresc3 += "<br>"+condtext2+"<br>"+datefor1;
+
+//forecast1
+let iconf1 = pogoda.forecast.forecastday[1].day.condition.icon;
 
 //forecast2
 let condtext3 = (pogoda.forecast.forecastday[2].day.condition.text).replace(/"/g,' ');
@@ -55,6 +52,8 @@ let tresc4 = "<img src='"+imgsrc3+"'>";
 tresc4 += "<br>"+condtext3+"<br>"+datefor2;
 
 //write to html elements
+
+  //cur
 document.getElementById('curimg').innerHTML = curimg;
 document.getElementById('currentweather').innerHTML = tresc1;
 document.getElementById('currentweather2').innerHTML = chmurki;
@@ -67,6 +66,8 @@ document.getElementById('wilgotnosc').innerHTML = wilgotnosc;
 document.getElementById('widzialnosc').innerHTML = widzialnosc;
 document.getElementById('update').innerHTML = update;
 
+  //f1
+document.getElementById('f1ico').innerHTML="<img class='forimg' src='https:"+iconf1+"'>";
 
 
 
