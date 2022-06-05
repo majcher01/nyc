@@ -42,6 +42,20 @@ let chmurki = cloudval;
 
 //forecast1
 let iconf1 = pogoda.forecast.forecastday[1].day.condition.icon;
+let f1hd = (pogoda.forecast.forecastday[1].day.condition.text).replace(/"/g,' ');
+let f1mintemp = pogoda.forecast.forecastday[1].day.mintemp_c;
+let f1maxtemp = pogoda.forecast.forecastday[1].day.maxtemp_c;
+let f1avgtemp = pogoda.forecast.forecastday[1].day.avgtemp_c;
+let f1avgvis = pogoda.forecast.forecastday[1].day.avgvis_km;
+let f1avghm = pogoda.forecast.forecastday[1].day.avghumidity;
+let f1rain = pogoda.forecast.forecastday[1].day.daily_chance_of_rain;
+let f1sunrise = (pogoda.forecast.forecastday[1].astro.sunrise).replace(/"/g,' ');
+let f1sunset = (pogoda.forecast.forecastday[1].astro.sunset).replace(/"/g,' ');
+let f1date = pogoda.forecast.forecastday[1].date;
+
+
+
+
 
 //forecast2
 let condtext3 = (pogoda.forecast.forecastday[2].day.condition.text).replace(/"/g,' ');
@@ -68,6 +82,19 @@ document.getElementById('update').innerHTML = update;
 
   //f1
 document.getElementById('f1ico').innerHTML="<img class='forimg' src='https:"+iconf1+"'>";
+document.getElementById('f1hd').innerHTML=f1hd;
+document.getElementById('f1mintemp').innerHTML=f1mintemp;
+document.getElementById('f1maxtemp').innerHTML=f1maxtemp;
+document.getElementById('f1avgtemp').innerHTML=f1avgtemp;
+document.getElementById('f1avgvis').innerHTML=f1avgvis;
+document.getElementById('f1avghm').innerHTML=f1avghm;
+document.getElementById('f1rain').innerHTML=f1rain;
+document.getElementById('f1sunrise').innerHTML=f1sunrise;
+document.getElementById('f1sunset').innerHTML=f1sunset;
+document.getElementById('f1date').innerHTML=f1date;
+
+
+
 
 
 
