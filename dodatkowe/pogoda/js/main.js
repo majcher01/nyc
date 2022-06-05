@@ -73,8 +73,8 @@ document.getElementById('update').innerHTML = update;
 
 
 
-document.getElementById('forecast1').innerHTML = tresc3;
-document.getElementById('forecast2').innerHTML = tresc4;
+//document.getElementById('forecast1').innerHTML = tresc3;
+//document.getElementById('forecast2').innerHTML = tresc4;
 });
 
 
