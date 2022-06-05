@@ -58,12 +58,17 @@ let f1date = pogoda.forecast.forecastday[1].date;
 
 
 //forecast2
-let condtext3 = (pogoda.forecast.forecastday[2].day.condition.text).replace(/"/g,' ');
-let imgsrc3 = "https:"+pogoda.forecast.forecastday[2].day.condition.icon;
-let datefor2 = (pogoda.forecast.forecastday[2].date).replace(/"/g,' ');
-
-let tresc4 = "<img src='"+imgsrc3+"'>";
-tresc4 += "<br>"+condtext3+"<br>"+datefor2;
+let iconf2 = pogoda.forecast.forecastday[2].day.condition.icon;
+let f2hd = (pogoda.forecast.forecastday[2].day.condition.text).replace(/"/g,' ');
+let f2mintemp = pogoda.forecast.forecastday[2].day.mintemp_c;
+let f2maxtemp = pogoda.forecast.forecastday[2].day.maxtemp_c;
+let f2avgtemp = pogoda.forecast.forecastday[2].day.avgtemp_c;
+let f2avgvis = pogoda.forecast.forecastday[2].day.avgvis_km;
+let f2avghm = pogoda.forecast.forecastday[2].day.avghumidity;
+let f2rain = pogoda.forecast.forecastday[2].day.daily_chance_of_rain;
+let f2sunrise = (pogoda.forecast.forecastday[2].astro.sunrise).replace(/"/g,' ');
+let f2sunset = (pogoda.forecast.forecastday[2].astro.sunset).replace(/"/g,' ');
+let f2date = pogoda.forecast.forecastday[2].date;
 
 //write to html elements
 
@@ -93,6 +98,18 @@ document.getElementById('f1sunrise').innerHTML=f1sunrise;
 document.getElementById('f1sunset').innerHTML=f1sunset;
 document.getElementById('f1date').innerHTML=f1date;
 
+  //f2
+  document.getElementById('f2ico').innerHTML="<img class='forimg' src='https:"+iconf2+"'>";
+document.getElementById('f2hd').innerHTML=f2hd;
+document.getElementById('f2mintemp').innerHTML=f2mintemp;
+document.getElementById('f2maxtemp').innerHTML=f2maxtemp;
+document.getElementById('f2avgtemp').innerHTML=f2avgtemp;
+document.getElementById('f2avgvis').innerHTML=f2avgvis;
+document.getElementById('f2avghm').innerHTML=f2avghm;
+document.getElementById('f2rain').innerHTML=f2rain;
+document.getElementById('f2sunrise').innerHTML=f2sunrise;
+document.getElementById('f2sunset').innerHTML=f2sunset;
+document.getElementById('f2date').innerHTML=f2date;
 
 
 
