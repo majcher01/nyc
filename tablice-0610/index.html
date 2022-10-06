@@ -15,6 +15,10 @@
 <body>
 
   <h1>Tablice</h1>
+  <br>
+  <br>
+  <div>lista zakupow:</div>
+  <p id="lista"></p>
 
 
 <script>
@@ -34,6 +38,7 @@
   }
 
   console.log(zakupy);
+  document.getElementById('lista').innerHTML=zakupy.join(", ");
 </script>
 </body>
 </html>
