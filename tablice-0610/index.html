@@ -22,6 +22,7 @@
 
 
 <script>
+  /*
   let tabela1=["ala", 2.34, 121, 3, [1,2,3]];
   console.log(tabela1);
 
@@ -38,7 +39,21 @@
   }
 
   console.log(zakupy);
-  document.getElementById('lista').innerHTML=zakupy.join(", ");
+  document.getElementById('lista').innerHTML=zakupy.join(", ");*/
+  //fill
+
+  var tablica1 = new Array();
+  tablica1.length=4;
+  tablica1.fill('0');
+  tablica1.fill('1', 0, 3)
+  tablica1.push('xd');
+  console.log(tablica1);
+  var tablica2 = new Array();
+  tablica2[1]='xd';
+  tablica2[1][2]='xd2';
+  console.log(tablica2[1][2]);
+
+
 </script>
 </body>
 </html>
