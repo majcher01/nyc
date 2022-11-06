@@ -1,0 +1,31 @@
+Sortowanie tablicy:
+array.sort(function(a, b){ return a - b});
+
+toString() - wiadomo
+array[1].toString();
+
+parseInt() / parseFloat()
+parseInt(array[2])
+
+join() - wiadomo
+array.join(", ");
+
+pop() - usuwa ostatni element
+
+push() - dodaje nowy element na koncu
+
+shift() - usuwa pierwszy element
+
+concat() - chyba wiadomo
+var tablica3 = tablica1.concat(tablica2);
+
+splice() - dodaje / usuwa elementy we wskazanym miejscu
+splice(2, 0, "dupa");
+2 - poczatek, gdzie ma byc dodane
+0 - ile elementow usunac
+"dupa" - string ktory dodajemy
+
+splice(0, 1);
+0 - gdzie sie zaczyna
+1 - ile usuwa
+no i to usunie jeden element w miejscu 0

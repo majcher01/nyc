@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<p id="dupa"></p>
+<br>
+<button onclick="usunostatni()">usun</button>
+<script>
+/*
+let zmienna = ["lelel","adajand", "sfsfsfs", 1];
+
+document.getElementById("dupa").innerHTML = zmienna;
+*/
+
+var tab = new Array();
+
+for(var i=0;i<6;i++){
+    var x = prompt("wpisz liczbe");
+    tab.push(x);
+}
+
+
+//tab = tab.map(Number);
+
+for(var j=0; j < tab.length;j++){
+    tab[j]=parseInt(tab[j]);
+}
+tab[2]=tab[2].toString();
+var dupa = tab.sort();
+console.log(dupa);
+document.getElementById("dupa").innerHTML = tab.join(", ");
+
+function usunostatni(){
+console.log("dupa");
+    tab.pop();
+document.getElementById("dupa").innerHTML = tab.join(", ");
+}
+
+</script>
+</body>
+</html>
