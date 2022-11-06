@@ -46,3 +46,30 @@ switch (expr) {
   default:
     console.log(`Sorry, we are out of ${expr}.`);
 }
+
+
+Obiekty:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+Dostawanie sie do wlasciwosci:
+person.firstName
+no proste to
+
+Funkcja w obiekcie
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+Dostawanie sie do tej funkcji:
+person.fullname()
+no tez proste
