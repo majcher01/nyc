@@ -3,6 +3,12 @@ let tab =[1,2,3,4]; lub let tab = new Array();
 Sortowanie tablicy:
 array.sort(function(a, b){ return a - b});
 
+fill:
+const tab = new Array(20);
+console.log(tab); //[empty x 20]
+tab.fill("kot");
+console.log(tab); //["kot", "kot", "kot", ...]
+
 toString() - wiadomo
 array[1].toString();
 
