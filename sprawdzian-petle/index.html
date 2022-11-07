@@ -46,9 +46,10 @@ Podaj liczbe:
  <script>
 
 function potegi(){
-    var poczatek = document.getElementById("potega").value;
-    for(var i = poczatek;i<10;i++){
-        console.log(i);
+    var poczatek = parseInt(document.getElementById("potega").value);
+    var b = poczatek + 10;
+document.getElementById("zad7").innerHTML="";
+    for(var i = poczatek;i<b;i++){
         document.getElementById("zad7").innerHTML+=(i**2).toString()+" ";
     }
 }
@@ -56,7 +57,15 @@ function potegi(){
 
 var x = 60;
 while(x>=10){
-        
+
+    if(x==20){
+        x=x-10;
+        continue;
+    }
+    if(x==40){
+        x=x-10;
+        continue;
+    }
     document.getElementById("whilezad5").innerHTML+=x+" ";
     x=x-10;
     
