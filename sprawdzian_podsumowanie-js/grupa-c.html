@@ -8,11 +8,14 @@
 </head>
 <body>
    <h2>Zadanie 1</h2>
-   <p id="currentname"></p>
-   <input type="number" maxlength="9" id="numertelefonu">
+   <p>
+       <span id="desc">Imie: </span>
+       <span id="currentname"></span>
+   </p>
+   <input type="number" id="numertelefonu">
     <bR>
-    <button id="dalejzad1" onclick="zadanie1()">Nastepny</button>
-
+    <button id="dalejzad1" style="margin-top: 15px;" onclick="zadanie1()">Nastepny</button>
+        <p id="wynik1"></p>
     <script>
 
         //zadanie 1
@@ -38,7 +41,14 @@
             if(lz1==(elementy.length)){
                 document.getElementById("currentname").innerHTML="Koniec";
                 document.getElementById("dalejzad1").style.display="none";
+                document.getElementById("desc").style.display="none";
                 console.log(array);
+                
+                for (const [key, value] of Object.entries(array)) {
+                    //console.log(`${key}: ${value}`);
+                    document.getElementById("wynik1").innerHTML+=`${key}: ${value}`+"<br>";
+                }               
+
             }
         }
 
