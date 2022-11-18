@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Zadanie 1</h2>
+   <p id="currentname"></p>
+   <input type="number" id="cena">
+    <bR>
+    <button id="dalejzad1" onclick="zadanie1()">Nastepny</button>
+    <p id="samochody"></p>
+    <p id="output"></p>
+    <h2>Zadanie 2</h2>
+    <p id="tabelazad2"><b>Cała tabela:</b> <br><br></p>
+    <p id="mezyzni"><b>Mezczyzni:</b> <br><br></p>
+    <p id="kobiety"><b>Kobiety:</b> <br><br></p>
+    <h2>Zadanie 3</h2>
+    <p id="tabelazad3"><b>Posortowana tabela:</b> <br><br></p>
+    <h2>Zadanie 5</h2>
+    <button id="dalejzad1" onclick="zad5()">Uruchom</button>
+    <p id="zad51"><b>Mezczyzni:</b> <br><br></p>
+    <p id="zad52"><b>Kobiety:</b> <br><br></p>
+    <script>
+
+        //zadanie 1
+
+        let array = new Array();
+        array["Fiat"]="";
+        array["Opel"]="";
+        array["Wieśwagen"]="";
+        array["Skoda"]="";
+
+        elementy = ["Fiat", "Opel", "Wieśwagen", "Skoda"];
+
+        let lz1=0;
+        document.getElementById("currentname").innerHTML=elementy[0];
+        function zadanie1(){
+            
+            var numer=document.getElementById("cena").value;
+            array[elementy[lz1]]=parseInt(numer);
+            lz1=lz1+1;
+            document.getElementById("currentname").innerHTML=elementy[lz1];
+            document.getElementById("cena").value="";
+            
+            if(lz1==(elementy.length)){
+                document.getElementById("currentname").innerHTML="Koniec";
+                document.getElementById("dalejzad1").style.display="none";
+                console.log(array);
+                for (const [key, value] of Object.entries(array)) {
+            document.getElementById("samochody").innerHTML+=`${key}: ${value}`+" zł"+"<br>";
+        }
+            }
+
+            
+    }
+     //Zadanie 2
+     let imiona = [{"Jan":"M", "Lola":"K", "Olaf":"M", "Tola":"K"}];
+     
+     
+     let kobiety=new Array();
+     let mezczyzni=new Array();
+     for (const [key, value] of Object.entries(imiona[0])) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("tabelazad2").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+    for (const [key, value] of Object.entries(imiona[0])) {
+                    // console.log(`${key}: ${value}`);
+                    var imie=`${key}`;
+                    var plec=`${value}`;
+                    if(`${value}`=="K"){
+                        kobiety.push(imie);
+                    }else if(`${value}`=="M"){
+                        mezczyzni.push(imie);
+                    }
+                   
+                } 
+    
+        
+        console.log(imie);
+        console.log(plec);
+        document.getElementById("kobiety").innerHTML+=kobiety.join(", "); 
+        document.getElementById("mezyzni").innerHTML+=mezczyzni.join(", "); 
+        console.log(imiona);
+        //zadanie 3 NIESKOCZONE!!!!!
+
+
+        
+  
+            //Zadanie 4
+            document.write("<h2>Zadanie 4</h2>");
+            var today = new Date();
+            var date = (today.getMonth()+1)+'-'+today.getDate();
+            document.write("Data " +date);
+             //Zadnie 5
+                function zad5(){
+                    var x =prompt("Napisz coś");
+                    var y =prompt("Napisz coś jeszcze");
+                    alert(x);
+                    alert(y);
+                }
+    
+    </script>
+
+    
+</body>
+</html>
