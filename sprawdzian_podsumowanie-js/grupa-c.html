@@ -16,6 +16,15 @@
     <bR>
     <button id="dalejzad1" style="margin-top: 15px;" onclick="zadanie1()">Nastepny</button>
         <p id="wynik1"></p>
+
+    <h2>Zadanie 2</h2>
+    <p id="tabelazad2"><b>Cała tabela:</b> <br><br></p>
+    <p id="zabytki"><b>Zabytki:</b> <br><br></p>
+    <p id="prawienowe"><b>Prawie nowe:</b> <br><br></p>
+
+
+
+
     <script>
 
         //zadanie 1
@@ -47,10 +56,48 @@
                 for (const [key, value] of Object.entries(array)) {
                     //console.log(`${key}: ${value}`);
                     document.getElementById("wynik1").innerHTML+=`${key}: ${value}`+"<br>";
-                }               
+                }              
 
             }
         }
+
+        //zadanie 2
+
+        let samochody = new Array();
+        samochody["Ford"]=2011;
+        samochody["Fiat"]=2009;
+        samochody["Mazda"]=2000;
+        samochody["Opel"]=2007;
+
+        let zabytki = new Array();
+        let prawie_nowe = new Array();
+
+        for (const [key, value] of Object.entries(samochody)) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("tabelazad2").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+
+        for (const [key, value] of Object.entries(samochody)) {
+            //console.log(`${key}: ${value}`);
+            var rok=`${value}`;
+            var marka=`${key}`;
+            if(rok<2010){
+                zabytki.push(marka);
+            }else if(rok>2010){
+                prawie_nowe.push(marka);
+            }
+        }
+        
+        console.log(samochody);
+        console.log(zabytki);
+        console.log(prawie_nowe);
+        document.getElementById("zabytki").innerHTML+=zabytki.join(", "); 
+        document.getElementById("prawienowe").innerHTML+=prawie_nowe.join(", "); 
+
+        
+
+
 
     </script>
 </body>
