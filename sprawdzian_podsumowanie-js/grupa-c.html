@@ -52,6 +52,7 @@
                 document.getElementById("currentname").innerHTML="Koniec";
                 document.getElementById("dalejzad1").style.display="none";
                 document.getElementById("desc").style.display="none";
+                console.log('imiona i numery:');
                 console.log(array);
                 
                 for (const [key, value] of Object.entries(array)) {
@@ -91,10 +92,16 @@
                 prawie_nowe.push(marka);
             }
         }
-        
+       
+        console.log("Całe samochody:");
         console.log(samochody);
+
+        console.log("Zabytki:");
         console.log(zabytki);
+
+        console.log("Prawie nowe:");
         console.log(prawie_nowe);
+
         document.getElementById("zabytki").innerHTML+=zabytki.join(", "); 
         document.getElementById("prawienowe").innerHTML+=prawie_nowe.join(", "); 
 
@@ -108,6 +115,7 @@
         return accumulator;
         }, {});
 
+        console.log("Samochody posortowane:");
         console.log(sorted); 
 
         for (const [key, value] of Object.entries(sorted)) {
