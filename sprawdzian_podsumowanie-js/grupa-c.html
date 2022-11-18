@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-bottom: 500px;
+        }
+        </style>
+</head>
+<body>
+   <h2>Zadanie 1</h2>
+   <p>
+       <span id="desc">Imie: </span>
+       <span id="currentname"></span>
+   </p>
+   <input type="number" id="numertelefonu">
+    <bR>
+    <button id="dalejzad1" style="margin-top: 15px;" onclick="zadanie1()">Nastepny</button>
+        <p id="wynik1"></p>
+
+    <h2>Zadanie 2</h2>
+    <p id="tabelazad2"><b>Cała tabela:</b> <br><br></p>
+    <p id="zabytki"><b>Zabytki:</b> <br><br></p>
+    <p id="prawienowe"><b>Prawie nowe:</b> <br><br></p>
+
+    <h2>Zadanie 3</h2>
+    <p id="zadanie3"><b>Samochody posortowane wedlug klucza:</b> <bR><br> </p>
+
+    <h2>Zadanie 4</h2>
+    <p>Podaj tekst:</p>
+    <input type="text" id="inputzad4"><button style="margin-left: 20px;" onclick="zad4()">Potwierdz</button>
+    <p>
+        <span><b>Długość tekstu: </b></span>
+        <span id="wynikzad4"></span>
+    </p>
+
+    
+    <h2>Zadanie 5</h2>
+    <p id="zad5"></p>
+
+    <h2>Zadanie 6</h2>
+    <p>Podaj liczbe:</p>
+    <input type="number" id="inputzad6"><button style="margin-left: 20px;" onclick="zad6()">Potwierdz</button>
+    <p id="wynikzad6"></p>
+
+    <h2>Zadanie 7</h2>
+    <p id="zad7"></p>
+
+    <h2>Zadanie 8</h2>
+    <p id="zad8"></p>
+
+
+    <h2>Zadanie 9</h2>
+    <p id="zad9"></p>
+
+    <h2>Zadanie 10</h2>
+    <button onclick="zad10()">Zmien kolor</button>
+    <br><br>
+    <button onclick="zad10_2()">Wroc do bialego</button>
+
+
+
+    <script>
+
+        //zadanie 1
+
+        let array = new Array();
+        array["Adam"]="";
+        array["Kasia"]="";
+        array["Michał"]="";
+        array["Natalia"]="";
+
+        elementy = ["Adam", "Kasia", "Michał", "Natalia"];
+
+        let lz1=0;
+        document.getElementById("currentname").innerHTML=elementy[0];
+        function zadanie1(){
+            
+            var numer=document.getElementById("numertelefonu").value;
+            array[elementy[lz1]]=parseInt(numer);
+            lz1=lz1+1;
+            document.getElementById("currentname").innerHTML=elementy[lz1];
+            document.getElementById("numertelefonu").value="";
+            
+            if(lz1==(elementy.length)){
+                document.getElementById("currentname").innerHTML="Koniec";
+                document.getElementById("dalejzad1").style.display="none";
+                document.getElementById("desc").style.display="none";
+                console.log('imiona i numery:');
+                console.log(array);
+                
+                for (const [key, value] of Object.entries(array)) {
+                    //console.log(`${key}: ${value}`);
+                    document.getElementById("wynik1").innerHTML+=`${key}: ${value}`+"<br>";
+                }              
+
+            }
+        }
+
+        //zadanie 2
+/*
+        let samochody = new Array();
+        samochody["Ford"]=2011;
+        samochody["Mazda"]=2000;
+        samochody["Fiat"]=2009;
+        samochody["Opel"]=2007;
+*/
+        let samochody = [{"Ford":2011, "Mazda":2000, "Fiat":2009, "Opel":2007}];
+
+        let zabytki = new Array();
+        let prawie_nowe = new Array();
+
+        for (const [key, value] of Object.entries(samochody[0])) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("tabelazad2").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+
+        for (const [key, value] of Object.entries(samochody[0])) {
+            //console.log(`${key}: ${value}`);
+            var rok=`${value}`;
+            var marka=`${key}`;
+            if(rok<2010){
+                zabytki.push(marka);
+            }else if(rok>2010){
+                prawie_nowe.push(marka);
+            }
+        }
+       
+        console.log("Całe samochody:");
+        console.log(samochody);
+
+        console.log("Zabytki:");
+        console.log(zabytki);
+
+        console.log("Prawie nowe:");
+        console.log(prawie_nowe);
+
+        document.getElementById("zabytki").innerHTML+=zabytki.join(", "); 
+        document.getElementById("prawienowe").innerHTML+=prawie_nowe.join(", "); 
+
+        //zadanie 3
+
+       var sorted = Object.keys(samochody[0])
+        .sort()
+        .reduce((accumulator, key) => {
+        accumulator[key] = samochody[0][key];
+
+        return accumulator;
+        }, {});
+
+        console.log("Samochody posortowane:");
+        console.log(sorted); 
+
+        for (const [key, value] of Object.entries(sorted)) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("zadanie3").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+        //zadanie 4
+
+        function zad4(){
+            var tekst = document.getElementById("inputzad4").value;
+
+            function policzznaki(string){
+                var dlugosc=string.length;
+                return dlugosc;
+            }
+            document.getElementById("wynikzad4").innerHTML=policzznaki(tekst);
+        }
+
+        //zadanie 5
+
+        let data = new Date();
+        let godzina = data.getHours();
+        let minuta = data.getMinutes();
+
+        document.getElementById("zad5").innerHTML=godzina+":"+minuta;
+
+
+        //zadanie 6
+
+        function zad6(){
+
+            var liczba = document.getElementById("inputzad6").value;
+
+            function policzkwadrat(liczba2){
+                var kwadrat = liczba2**2;
+                return kwadrat;
+            }
+
+            document.getElementById("wynikzad6").innerHTML="Kwadrat liczby "+liczba+" to "+policzkwadrat(liczba);
+
+
+        }
+
+        //zadanie 7
+
+        let produkt = {
+            nazwa: "ser",
+            kod: "213769420",
+            cena: 23
+        };
+
+        for (const [key, value] of Object.entries(produkt)) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("zad7").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+
+        //zadanie 8
+        produkt.opis = "najlepszy ser na swiecie";
+
+
+        for (const [key, value] of Object.entries(produkt)) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("zad8").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+        //zadanie 9
+
+        let kot = new Object();
+
+        kot.nogi = 4;
+        kot.ogon = 1;
+        kot.odgłos = function(){return "Miał miał";}
+
+
+        for (const [key, value] of Object.entries(kot)) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("zad9").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+        document.getElementById("zad9").innerHTML+="<br><br>Wynik metody:<br>"+kot.odgłos();
+
+
+        //zadanie 10
+
+        function zad10(){
+            document.body.style.backgroundColor="green";
+        }
+
+        function zad10_2(){
+            document.body.style.backgroundColor="white";
+        }
+
+    </script>
+</body>
+</html>
