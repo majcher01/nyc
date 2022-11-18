@@ -28,16 +28,17 @@
         let lz1=0;
         document.getElementById("currentname").innerHTML=elementy[0];
         function zadanie1(){
-            if(lz1==(elementy.length-1)){
-                document.getElementById("currentname").innerHTML="Koniec";
-                document.getElementById("dalejzad1").style.display="none";
-                console.log(array);
-            }else{
+            
             var numer=document.getElementById("numertelefonu").value;
             array[elementy[lz1]]=parseInt(numer);
             lz1=lz1+1;
             document.getElementById("currentname").innerHTML=elementy[lz1];
             document.getElementById("numertelefonu").value="";
+            
+            if(lz1==(elementy.length)){
+                document.getElementById("currentname").innerHTML="Koniec";
+                document.getElementById("dalejzad1").style.display="none";
+                console.log(array);
             }
         }
 
