@@ -5,8 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin-bottom: 300px;
+        }
+    </style>
 </head>
 <body>
+   
+
+   <h2>Zadanie 1</h2>
+   <p>
+       <span id="desc">Przedmiot: </span>
+       <span id="currentname"></span>
+   </p>
+   <input type="number" id="ocena">
+    <bR>
+    <button id="dalejzad1" style="margin-top: 15px;" onclick="zadanie1()">Nastepny</button>
+        <p id="wynik1"></p>
     
+    <script>
+
+        
+        //zadanie 1
+
+        let array = new Array();
+        array["Chemia"]="";
+        array["Fizyka"]="";
+        array["Geografia"]="";
+
+        elementy = ["Chemia", "Fizyka", "Geografia"];
+
+        let lz1=0;
+        document.getElementById("currentname").innerHTML=elementy[0];
+        function zadanie1(){
+            
+            var numer=document.getElementById("ocena").value;
+            array[elementy[lz1]]=parseInt(numer);
+            lz1=lz1+1;
+            document.getElementById("currentname").innerHTML=elementy[lz1];
+            document.getElementById("ocena").value="";
+            
+            if(lz1==(elementy.length)){
+                document.getElementById("currentname").innerHTML="Koniec";
+                document.getElementById("dalejzad1").style.display="none";
+                document.getElementById("desc").style.display="none";
+                console.log('przedmioty i oceny:');
+                console.log(array);
+                
+                for (const [key, value] of Object.entries(array)) {
+                    //console.log(`${key}: ${value}`);
+                    document.getElementById("wynik1").innerHTML+=`${key}: ${value}`+"<br>";
+                }              
+
+            }
+        }
+
+
+    </script>
 </body>
 </html>
