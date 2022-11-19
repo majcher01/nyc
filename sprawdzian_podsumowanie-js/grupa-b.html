@@ -7,6 +7,147 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>Zadanie 1</h2>
+   <p id="currentname"></p>
+   <input type="number" id="cena">
+    <bR>
+    <button id="dalejzad1" onclick="zadanie1()">Nastepny</button>
+    <p id="samochody"></p>
+    <p id="output"></p>
+    <h2>Zadanie 2</h2>
+    <p id="tabelazad2"><b>Cała tabela:</b> <br><br></p>
+    <p id="mezyzni"><b>Mezczyzni:</b> <br><br></p>
+    <p id="kobiety"><b>Kobiety:</b> <br><br></p>
+    <h2>Zadanie 3</h2>
+    <p id="tabelazad3"><b>Posortowana tabela:</b> <br><br></p>
+    <h2>Zadanie 4</h2>
+    <p id="zad4"></p>
+    <h2>Zadanie 5</h2>
+    <button id="dalejzad1" onclick="zad5()">Uruchom</button>
+    <p id="zad51"><b> </b></p>
+    <p id="zad52"><b> </b></p>
+    <h2>Zadanie 6</h2>
+    <p id="zad6"></p>
+    <h2>Zadanie 7</h2>
+    <p id="zad7"></p>
+    <h2>Zadanie 8</h2>
+    <p id="zad8"></p>
+    <h2>Zadanie 9</h2>
+    <p id="napiszad9" style="display:none;font-size: 100px;">Kliknięty</p>
+    <button onclick="zad9()">Kliknij</button>
+    <script>
+
+        //zadanie 1
+
+        let array = new Array();
+        array["Fiat"]="";
+        array["Opel"]="";
+        array["Wieśwagen"]="";
+        array["Skoda"]="";
+
+        elementy = ["Fiat", "Opel", "Wieśwagen", "Skoda"];
+
+        let lz1=0;
+        document.getElementById("currentname").innerHTML=elementy[0];
+        function zadanie1(){
+            
+            var numer=document.getElementById("cena").value;
+            array[elementy[lz1]]=parseInt(numer);
+            lz1=lz1+1;
+            document.getElementById("currentname").innerHTML=elementy[lz1];
+            document.getElementById("cena").value="";
+            
+            if(lz1==(elementy.length)){
+                document.getElementById("currentname").innerHTML="Koniec";
+                document.getElementById("dalejzad1").style.display="none";
+                console.log(array);
+                for (const [key, value] of Object.entries(array)) {
+            document.getElementById("samochody").innerHTML+=`${key}: ${value}`+" zł"+"<br>";
+        }
+            }
+
+            
+    }
+     //Zadanie 2
+     let imiona = [{"Jan":"M", "Lola":"K", "Olaf":"M", "Tola":"K"}];
+     
+     
+     let kobiety=new Array();
+     let mezczyzni=new Array();
+     for (const [key, value] of Object.entries(imiona[0])) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("tabelazad2").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+    for (const [key, value] of Object.entries(imiona[0])) {
+                    // console.log(`${key}: ${value}`);
+                    var imie=`${key}`;
+                    var plec=`${value}`;
+                    if(`${value}`=="K"){
+                        kobiety.push(imie);
+                    }else if(`${value}`=="M"){
+                        mezczyzni.push(imie);
+                    }
+                   
+                } 
+    
+        
+        console.log(imie);
+        console.log(plec);
+        document.getElementById("kobiety").innerHTML+=kobiety.join(", "); 
+        document.getElementById("mezyzni").innerHTML+=mezczyzni.join(", "); 
+        console.log(imiona);
+        //zadanie 3 NIESKOCZONE!!!!!
+
+
+        
+  
+            //Zadanie 4
+            var today = new Date();
+            var date = (today.getMonth()+1)+'-'+today.getDate();
+            document.getElementById("zad4").innerHTML="Data: "+date;
+             //Zadnie 5
+                function zad5(){
+                    var x =prompt("Napisz coś");
+                    var y =prompt("Napisz coś jeszcze");
+                    alert(x+y);
+                }
+                //Zad 6
+                let samochod = {
+            marka: "wieśwagen",
+            cena: 120000,
+            pojemnosc: 2.3
+        };
+
+        for (const [key, value] of Object.entries(samochod)) {
+            document.getElementById("zad6").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+        //zad7
+        let samochod2 = {
+            marka: "wieśwagen",
+            cena: 120000,
+            pojemnosc: 2.3,
+            przyspieszenie:3.2
+        };
+
+        for (const [key, value] of Object.entries(samochod2)) {
+            document.getElementById("zad7").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+        //zad8
+        let kon = new Object();
+
+        kon.nogi = 4;
+        kon.ogon = 1;
+        kon.odgłos = function(){return "Yyyhaaahaaa";}
+        for (const [key, value] of Object.entries(kon)) {
+            document.getElementById("zad8").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+        document.getElementById("zad8").innerHTML+="<br><br>Wynik metody: "+kon.odgłos();
+        //zad 9
+        function zad9(){
+            document.getElementById("napiszad9").style.display = "block";
+        }
+    </script>
+
     
 </body>
 </html>
