@@ -24,6 +24,38 @@
     <button id="dalejzad1" style="margin-top: 15px;" onclick="zadanie1()">Nastepny</button>
         <p id="wynik1"></p>
     
+    <h2>Zadanie 2</h2>
+    <p id="tabelazad2"><b>Cała tabela:</b> <br><br></p>
+    <p id="nieletni"><b>Nieletni:</b> <br><br></p>
+    <p id="pelnoletni"><b>Pełnoletni:</b> <br><br></p>
+
+
+    <h2>Zadanie 3</h2>
+    <p id="zadanie3"><b>Ludzie posortowani wedlug klucza:</b> <bR><br> </p>
+
+    <h2>Zadanie 4</h2>
+    <p id="zad4"></p>
+
+    <h2>Zadanie 5</h2>
+    <p>Wpisz tekst:</p>
+    <input type="text" id="inputzad5"><button style="margin-left: 20px;" onclick="zad5()">Potwierdz</button>
+    <p id="wynikzad5"></p>
+
+    <h2>Zadanie 6</h2>
+    <p id="zad6"></p>
+
+
+    <h2>Zadanie 7</h2>
+    <p id="zad7"></p>
+
+    <h2>Zadanie 8</h2>
+    <p id="zad8"></p>
+
+    <h2>Zadanie 9</h2>
+    <button onclick="zad9()">Kliknij</button>
+    <p id="zad9"></p>
+
+
     <script>
 
         
@@ -61,6 +93,127 @@
             }
         }
 
+
+        //zadanie 2
+        let ludzie = [{"Ala":21, "Lola":32, "Ola":15, "Tola":16}];
+
+        let nieletnie = new Array();
+        let pelnoletnie = new Array();
+
+        for (const [key, value] of Object.entries(ludzie[0])) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("tabelazad2").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+
+        for (const [key, value] of Object.entries(ludzie[0])) {
+            //console.log(`${key}: ${value}`);
+            var wiek=`${value}`;
+            var imie=`${key}`;
+            if(wiek<18){
+                nieletnie.push(imie);
+            }else if(wiek>=18){
+                pelnoletnie.push(imie);
+            }
+        }
+       
+        console.log("Cała tabela:");
+        console.log(ludzie[0]);
+
+        console.log("Nieletni:");
+        console.log(nieletnie);
+
+        console.log("Pełnoletni:");
+        console.log(pelnoletnie);
+
+        document.getElementById("nieletni").innerHTML+=nieletnie.join(", "); 
+        document.getElementById("pelnoletni").innerHTML+=pelnoletnie.join(", "); 
+
+
+        //zadanie 3
+
+       var sorted = Object.keys(ludzie[0])
+        .sort().reverse()
+        .reduce((accumulator, key) => {
+        accumulator[key] = ludzie[0][key];
+
+        return accumulator;
+        }, {});
+
+
+        console.log("Ludzie posortowani:");
+        console.log(sorted); 
+
+        for (const [key, value] of Object.entries(sorted)) {
+            //console.log(`${key}: ${value}`);
+            document.getElementById("zadanie3").innerHTML+=`${key}: ${value}`+"<br>";
+        }
+
+        //zadanie 4
+        let data = new Date();
+        let miesiac = data.getMonth();
+        let rok = data.getFullYear();
+
+        document.getElementById("zad4").innerHTML=miesiac+"-"+rok;
+
+
+        //zadanie 5
+
+        function zad5(){
+            var tekst = document.getElementById("inputzad5").value;
+
+            function checkempty(val){
+                if(val.trim() == ""){
+                    return "puste";
+                }else{
+                    return "zawiera tekst";
+                }
+            }
+            document.getElementById("wynikzad5").innerHTML=checkempty(tekst);
+
+        }
+
+        //zadanie 6
+
+        let klasa={
+            oznaczenie:"4m",
+            "ilość uczniów":28,
+            profil:"technik informatyk"
+        }
+
+        for (const [key, value] of Object.entries(klasa)) {
+            //console.log(`${key}: ${value}`);
+        document.getElementById("zad6").innerHTML+=`${key} : ${value}`+"<br>";
+        }
+        
+        //zadanie 7
+        klasa.wychowawca="Adam Nowak";
+
+        for (const [key, value] of Object.entries(klasa)) {
+            //console.log(`${key}: ${value}`);
+        document.getElementById("zad7").innerHTML+=`${key} : ${value}`+"<br>";
+        }
+
+        //zadanie 8
+
+        let ptak = new Object();
+
+        ptak.skrzydla=2;
+        ptak.dziob=1;
+        ptak.spiew=function(){return "kra kra"}
+
+
+        for (const [key, value] of Object.entries(ptak)) {
+            //console.log(`${key}: ${value}`);
+        document.getElementById("zad8").innerHTML+=`${key} : ${value}`+"<br>";
+        }
+        document.getElementById("zad8").innerHTML+="<br><br><b>Wynik metody:</b><br>"+ptak.spiew();
+
+        //zadanie 9
+
+        function zad9(){
+            document.getElementById("zad9").innerHTML="Kasprzak";
+        }
 
     </script>
 </body>
