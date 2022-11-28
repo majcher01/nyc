@@ -10,11 +10,19 @@
     <script src="js/main.js"></script>
     <title>Pogoda</title>
 </head>
-<body onload="start()">
+<body onload="">
     <div class="srodek">
         <div class="bckg">
             <div class="header1">
-                Tutaj sprawdzisz prognozę pogody dla swojej aktualnej lokalizacji.
+                Tutaj sprawdzisz prognozę pogody dla wybranej lokalizacji.
+            </div>
+            <div class="header1">
+                <button class="btn1" style="margin-right: 10px;" onclick="start()">Wykryj lokalizację</button>
+                <button class="btn1" style="margin-left: 10px;" onclick="pokaz()">Wpisz lokalizację</button>
+            </div>
+            <div class="header1" id="inputlok" style="display: none;">
+                <input type="text" id="lokalizacja" placeholder="tutaj wpisz miasto">
+                <button style="margin-left:5px;" onclick="start2()">Potwierdź</button>
             </div>
             <hr style="margin-top: 50px;">
             <div style="margin-bottom: 40px;">
@@ -134,6 +142,6 @@
         </div>
         
     </div>
-
+<script src="js/main2.js"></script>
 </body>
 </html>
