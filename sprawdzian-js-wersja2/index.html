@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sprawdzian jakub majcherski 4m</title>
+    <style>
+        body{
+            margin-bottom:300px;
+        }
+    </style>
+</head>
+<body>
+   <h1>Zadanie 1</h1>
+   
+   <input type="number" id="stopnie"> 
+   <select id="typ">
+    <option value="c">C</option>
+    <option value="k">K</option>
+   </select>
+   <br>
+   <button onclick="policz()">Policz</button>
+   <p id="wynikstopnie"></p>
+
+   <h1>Zadanie 2</h1>
+   <p id="datagodzina"></p>
+
+   <h1>Zadanie 3</h1>
+   <p id="wynikzad3"></p>
+   <p id="wynikzad32"></p>
+
+   <h1>Zadanie 4</h1>
+   <input type="number" id="silnia">
+   <button onclick="getsilnia()">Policz</button>
+   <p id="wyniksilnia"></p>
+
+
+<h1>Zadanie 5</h1>
+<p id="wynik5"></p>
+
+
+<h1>Zadanie 6</h1>
+<p id="wynik6"></p>
+
+
+<h1>Zadanie 7</h1>
+<p id="zad7"></p>
+
+<h1>Zadanie 8</h1>
+<button onclick="zad8()">Wyswietl</button>
+<p id="zad8"></p>
+
+
+
+   <script>
+    function policz(){
+        let stopnie = document.getElementById('stopnie').value;
+        let typ=document.getElementById('typ').value;
+
+        //document.getElementById('wynikstopnie').innerHTML=stopnie+" "+typ;
+        if(typ=="k"){
+            let stopnieint=parseInt(stopnie);
+            let wynik=stopnieint+273.15;
+            document.getElementById('wynikstopnie').innerHTML=stopnieint+" K, to "+wynik+" C";
+        }else if(typ=="c"){
+            let stopnieint=parseInt(stopnie);
+            let wynik=stopnieint-273.15;
+            document.getElementById('wynikstopnie').innerHTML=stopnieint+" C, to "+wynik+" K";
+        }
+    }
+    
+    let data=new Date();
+    let minuty=data.getMinutes();
+    let godziny=data.getHours();
+    document.getElementById('datagodzina').innerHTML=godziny+":"+minuty;
+
+    let tabela1=["Kula", "Nowak", "Lis", "Kozak"];
+    let tabela2=["Kula", "Nowak", "Kozak"];
+
+    for (var i=0;i<tabela1.length;i++){
+        if(tabela1[i]=="Lis"){
+            break;
+        }else{
+        document.getElementById('wynikzad3').innerHTML+=tabela1[i]+", ";
+    }
+}
+
+
+    for (var i=0;i<tabela2.length;i++){
+        if(tabela2[i]=="Lis"){
+            break;
+        }else{
+        document.getElementById('wynikzad32').innerHTML+=tabela2[i]+", ";
+    }
+}
+
+function getsilnia(){
+let wartosc=document.getElementById('silnia').value;
+
+let wynik=wartosc;
+
+for(var i=(wartosc-1);i>0;i--){
+    wynik=wynik*i;
+}
+
+document.getElementById('wyniksilnia').innerHTML=wynik;
+
+}
+
+
+let klasa = {
+            oznaczenie: "4m",
+            iloscuczniow: 28,
+            profil: "informatyk"
+        };
+
+        for (const [key, value] of Object.entries(klasa)) {
+            //console.log(`${key}: ${value}`);
+        document.getElementById("wynik5").innerHTML+=`${key} : ${value}`+"<br>";
+        }
+
+        klasa.wychowawca="Mariusz Nowak";
+
+        for (const [key, value] of Object.entries(klasa)) {
+            //console.log(`${key}: ${value}`);
+        document.getElementById("wynik6").innerHTML+=`${key} : ${value}`+"<br>";
+        }
+
+
+
+        let ptak = new Object();
+
+        ptak.skrzydla=2;
+        ptak.dziob=1;
+        ptak.spiew=function(){return "kra kra"}
+
+
+        for (const [key, value] of Object.entries(ptak)) {
+            //console.log(`${key}: ${value}`);
+        document.getElementById("zad7").innerHTML+=`${key} : ${value}`+"<br>";
+        }
+        document.getElementById("zad7").innerHTML+="<br><br><b>Wynik metody:</b><br>"+ptak.spiew();
+
+
+
+        function zad8(){
+            document.getElementById("zad8").innerHTML="Kasprzak";
+        }
+
+   </script>
+</body>
+</html>
