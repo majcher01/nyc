@@ -147,6 +147,7 @@ Błędne odpowiedzi:
 
 </div>
 ";
+//SELECT pytania.tresc, wyniki.odp1, pytania.odppoprawna FROM `wyniki` JOIN pytania ON wyniki.idp1=pytania.id;
 }
 
 ?>
