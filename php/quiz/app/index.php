@@ -25,6 +25,8 @@ $rekordy=mysqli_num_rows($query);
 
 $pytania=UniqueRandomNumbers(1, $rekordy, 5);
 
+$_SESSION['wybrane']=$pytania;
+
 
 
 
@@ -38,13 +40,27 @@ $pytania=UniqueRandomNumbers(1, $rekordy, 5);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz</title>
+    <style>
+.przycisk{width: 150px;
+height: 50px;
+font-size: 20px;
+background-color: transparent;
+border: 1px solid black;
+border-radius: 15px;}
+            .przycisk:hover{
+                background-color: black;
+                color:white;
+                transition-duration: 0.4s;
+            }
+
+</style>
 </head>
 <body>
-    <div style='text-align: right'>
-    <a href='../php/logout.php'>wyloguj</a>
+    <div style='text-align: right; margin-bottom:20px; border-bottom:2px solid black;'>
+    <a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a>
 </div>
 <div>
-
+<form action='../php/quizcheck.php' method='post'>
 
 <?php
 
@@ -52,9 +68,9 @@ foreach ($pytania as $pytanie){
     $zapytanie = mysqli_query($connection, " SELECT * FROM pytania WHERE id='$pytanie' ");
     $row=mysqli_fetch_array($zapytanie);
     echo "
-    <p>".$row['tresc']."</p>";
+    <p><b>".$row['tresc']."</b></p>";
     echo "
-    <form action='../php/quizcheck.php' method='post'>
+    
     <input type='radio' id='1-".$pytanie."' name='".$pytanie."' value='a'>
     <label for='1-".$pytanie."'>".$row['odpa']."</label><br>
     <input type='radio' id='2-".$pytanie."' name='".$pytanie."' value='b'>
@@ -63,12 +79,14 @@ foreach ($pytania as $pytanie){
     <label for='3-".$pytanie."'>".$row['odpc']."</label><br>
     <input type='radio' id='4-".$pytanie."' name='".$pytanie."' value='d'>
     <label for='4-".$pytanie."'>".$row['odpd']."</label><br>
-    </form>
+    <br><br><br>
     ";
 }
 
 ?>
 
+<input type='submit' value='Potwierdz' class='przycisk'>
+</form>
 </div>
 </body>
 </html>

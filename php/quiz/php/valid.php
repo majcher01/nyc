@@ -20,6 +20,7 @@ $connection->close();
 if($rekordy==1){
 session_start();
 //generacja ranom stringa do value cookiesa
+$_SESSION['login']=$email;
 $str=rand();
 $result = md5($str);
 $cookievalue=$result;
