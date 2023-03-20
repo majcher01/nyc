@@ -13,6 +13,10 @@ function UniqueRandomNumbers($min, $max, $quantity) {
     return array_slice($numbers, 0, $quantity);
 }
 
+$czasrozpoczecia=date("H:i:s");
+
+$_SESSION['czasrozpoczecia']=$czasrozpoczecia;
+
 
 $connection = new mysqli($host, $dbuser, $dbpass, $dbname);
 if(!$connection){

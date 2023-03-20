@@ -54,6 +54,50 @@ table {
   border-spacing: 0px;
 }
 
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding-top:18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+  width:736px;
+}
+.tb{
+  display: inline-block;
+  width: 140px;
+}
+.tx{
+  display: inline-block;
+  width: 70px;
+}
 </style>
 </head>
 <body>
@@ -67,22 +111,64 @@ Witaj <?php echo $result['imie']. " " . $result['nazwisko']."!";?>
 <br>
 Twoje poprzednie wyniki:
 <br><br>
-<table>
 <?php
 $uid=$result['id'];
 $r2=mysqli_query($connection, " SELECT * FROM wyniki WHERE userid='$uid' ");
-echo "<tr><th>Data</th><th>Czas</th><th>Wynik</th></td>";
+echo "
+<span class='tb'>Data</span>
+<span class='tb'>Czas rozpoczęcia</span>
+<span class='tb'>Czas zakończenia</span>
+<span class='tb'>Czas trwania</span>
+<span class='tx'>Wynik</span>
+<span class='tx'></span>
+<br><br>";
 while($row=mysqli_fetch_array($r2)){
+  /*
 echo"<tr>";
 echo "<td>".$row['data']."</td>";
-echo "<td>".$row['czas']."</td>";
+echo "<td>".$row['czas-rozpoczecia']."</td>";
+echo "<td>".$row['czas-zakonczenia']."</td>";
+echo "<td>".$row['czas-trwania']." minuty</td>";
 echo "<td>".$row['wynik']."/5</td>";
 echo"</tr>";
+*/
+echo "<span class='collapsible'>";
+echo "<span class='tb'>".$row['data']."</span>";
+echo "<span class='tb'>".$row['czas-rozpoczecia']."</span>";
+echo "<span class='tb'>".$row['czas-zakonczenia']."</span>";
+echo "<span class='tb'>".$row['czas-trwania']." minuty</span>";
+echo "<span class='tx'>".$row['wynik']."/5</span>";
+echo "<span class='tx'>"."Rozwiń"."</span>";
+echo"
+</span>
+<div class='content'>
+dupa
+</div>
+";
 }
 
 ?>
-</table>
 </div>
+
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+
+</script>
 </body>
 </html>
 <?php
