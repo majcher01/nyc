@@ -142,7 +142,9 @@ echo "<span class='tx'>"."Rozwiń"."</span>";
 echo"
 </span>
 <div class='content'>
-dupa
+Błędne odpowiedzi:
+
+
 </div>
 ";
 }
