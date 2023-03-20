@@ -31,7 +31,6 @@ $cookie_n_sesja = "sesja";                                                      
                                 $_SESSION['start'] = time(); // Taking now logged in time.
                 // Ending a session in given period of time from the starting time.
                 $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-                                $_SESSION['luser'] = $login;
                                 header('Location: ../app');
 }else{
     header('Location: ../login.php?niepoprawne=true');

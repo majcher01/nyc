@@ -51,6 +51,14 @@ border-radius: 15px;}
 
         ";
     }
+    if(isset($_GET['expired'])){
+        echo"
+        <div style='margin-top:30px; color: red; text-align:center;'>
+        Sesja wygasla, zaloguj sie ponownie.
+        </div>
+
+        ";
+    }
     ?>
 </div>
 
