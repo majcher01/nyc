@@ -42,6 +42,16 @@ border-radius: 15px;}
             <input type='submit' value='Potwierdz'>
         </form>
     </div>
+    <?php
+    if(isset($_GET['niepoprawne'])){
+        echo"
+        <div style='margin-top:30px; color: red; text-align:center;'>
+        Niepoprawny login lub haslo!
+        </div>
+
+        ";
+    }
+    ?>
 </div>
 
 </div>
