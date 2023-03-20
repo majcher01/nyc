@@ -48,7 +48,14 @@ $to_time = strtotime($czaszakonczenia);
 $diff_minutes = round(abs($from_time - $to_time) / 60,2);
 
 
-mysqli_query($connection, " INSERT INTO `wyniki` (`id`, `userid`, `data`, `czas-rozpoczecia`, `czas-zakonczenia`, `czas-trwania`, `wynik`, `idp1`, `odp1`, `idp2`, `odp2`, `idp3`, `odp3`, `idp4`, `odp4`, `idp5`, `odp5`) VALUES (NULL, '$userid', '$data', '$czasrozpoczecia', '$czaszakonczenia', '$diff_minutes', '$poprawne', '$selected[0]', '$_POST[1]', '$selected[1]', '$_POST[2]', '$selected[2]', '$_POST[3]', '$selected[3]', '$_POST[4]', '$selected[4]', '$_POST[5]');  ");
+$o1=$selected[0];
+$o2=$selected[1];
+$o3=$selected[2];
+$o4=$selected[3];
+$o5=$selected[4];
+
+
+mysqli_query($connection, " INSERT INTO `wyniki` (`id`, `userid`, `data`, `czas-rozpoczecia`, `czas-zakonczenia`, `czas-trwania`, `wynik`, `idp1`, `odp1`, `idp2`, `odp2`, `idp3`, `odp3`, `idp4`, `odp4`, `idp5`, `odp5`) VALUES (NULL, '$userid', '$data', '$czasrozpoczecia', '$czaszakonczenia', '$diff_minutes', '$poprawne', '$selected[0]', '$_POST[$o1]', '$selected[1]', '$_POST[$o2]', '$selected[2]', '$_POST[$o3]', '$selected[3]', '$_POST[$o4]', '$selected[4]', '$_POST[$o5]');  ");
 
 echo "Liczba poprawnych: ". $poprawne;
 
