@@ -76,7 +76,7 @@ while($row=mysqli_fetch_array($r2)){
 echo"<tr>";
 echo "<td>".$row['data']."</td>";
 echo "<td>".$row['czas']."</td>";
-echo "<td>".$row['wynik']."</td>";
+echo "<td>".$row['wynik']."/5</td>";
 echo"</tr>";
 }
 
