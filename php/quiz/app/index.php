@@ -56,9 +56,11 @@ border-radius: 15px;}
 </style>
 </head>
 <body>
-    <div style='text-align: right; margin-bottom:20px; border-bottom:2px solid black;'>
-    <a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a>
-</div>
+    <div style='margin-bottom:20px; border-bottom:2px solid black; height:30px;'>
+    <span style='float:left;'><a href='../profile' style='text-decoration:none;'>Profil</a></span>
+    <span style='float:right;'><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
+    
+    </div>
 <div>
 <form action='../php/quizcheck.php' method='post'>
 
@@ -71,7 +73,7 @@ foreach ($pytania as $pytanie){
     <p><b>".$row['tresc']."</b></p>";
     echo "
     
-    <input type='radio' id='1-".$pytanie."' name='".$pytanie."' value='a'>
+    <input type='radio' id='1-".$pytanie."' name='".$pytanie."' value='a' checked>
     <label for='1-".$pytanie."'>".$row['odpa']."</label><br>
     <input type='radio' id='2-".$pytanie."' name='".$pytanie."' value='b'>
     <label for='2-".$pytanie."'>".$row['odpb']."</label><br>
