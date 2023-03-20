@@ -162,6 +162,8 @@ $rp4=mysqli_fetch_array($p4);
 $p5=mysqli_query($connection, " SELECT pytania.tresc, wyniki.odp5, pytania.odppoprawna FROM `wyniki` JOIN pytania ON wyniki.idp5=pytania.id WHERE wyniki.id='$idw'; ");
 $rp5=mysqli_fetch_array($p5);
 
+$c=0;
+
 if($rp1['odp1']!=$rp1['odppoprawna']){
   echo "Pytanie: <br>".$rp1['tresc']."<br><br>";
   $trescp1=$rp1['tresc'];
@@ -172,7 +174,7 @@ if($rp1['odp1']!=$rp1['odppoprawna']){
   echo "Poprawna odpowiedź: <br><span style='color:green;'>".$odpusera[$t2]."</span><br>";
   echo "<br><br>";
 
-}
+}else{$c++;}
 
 if($rp2['odp2']!=$rp2['odppoprawna']){
   echo "Pytanie: <br>".$rp2['tresc']."<br><br>";
@@ -184,7 +186,7 @@ if($rp2['odp2']!=$rp2['odppoprawna']){
   echo "Poprawna odpowiedź: <br><span style='color:green;'>".$odpusera[$t2]."</span><br>";
   echo "<br><br>";
 
-}
+}else{$c++;}
 
 if($rp3['odp3']!=$rp3['odppoprawna']){
   echo "Pytanie: <br>".$rp3['tresc']."<br><br>";
@@ -196,7 +198,7 @@ if($rp3['odp3']!=$rp3['odppoprawna']){
   echo "Poprawna odpowiedź: <br><span style='color:green;'>".$odpusera[$t2]."</span><br>";
   echo "<br><br>";
 
-}
+}else{$c++;}
 
 if($rp4['odp4']!=$rp4['odppoprawna']){
   echo "Pytanie: <br>".$rp4['tresc']."<br><br>";
@@ -208,7 +210,7 @@ if($rp4['odp4']!=$rp4['odppoprawna']){
   echo "Poprawna odpowiedź: <br><span style='color:green;'>".$odpusera[$t2]."</span><br>";
   echo "<br><br>";
 
-}
+}else{$c++;}
 if($rp5['odp5']!=$rp5['odppoprawna']){
   echo "Pytanie: <br>".$rp5['tresc']."<br><br>";
   $trescp5=$rp5['tresc'];
@@ -219,6 +221,10 @@ if($rp5['odp5']!=$rp5['odppoprawna']){
   echo "Poprawna odpowiedź: <br><span style='color:green;'>".$odpusera[$t2]."</span><br>";
   echo "<br><br>";
 
+}else{$c++;}
+
+if($c==5){
+  echo "Brak, gratulujemy!";
 }
 echo"
 </div>
