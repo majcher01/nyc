@@ -5,45 +5,42 @@ if(!isset($_COOKIE[$cookie_name])){
 header('Location: ../php/expired.php');
 }
 
-
-$mode=$_GET['mode'];
-
-if($mode=='play'){
-
-
-
-
 require_once "../php/connect.php";
 
-function UniqueRandomNumbers($min, $max, $quantity) {
-    $numbers = range($min, $max);
-    shuffle($numbers);
-    return array_slice($numbers, 0, $quantity);
-}
 
-$czasrozpoczecia=date("H:i:s");
-
-$_SESSION['czasrozpoczecia']=$czasrozpoczecia;
-
+$email=$_SESSION['login'];
 
 $connection = new mysqli($host, $dbuser, $dbpass, $dbname);
 if(!$connection){
 die('Błąd bazy danych');
 }
-$query = mysqli_query($connection, "SELECT * FROM `pytania` ;");
+$query = mysqli_query($connection, "SELECT * FROM `uzytkownicy` WHERE email='$email' ;");
 //$result = $query->fetch_assoc();
-$rekordy=mysqli_num_rows($query);
+$result=mysqli_fetch_array($query);
 
-
-$pytania=UniqueRandomNumbers(1, $rekordy, 5);
-
-$_SESSION['wybrane']=$pytania;
-
-
-
-
-
+if($result['typ']!="admin"){
+  $connection->close();
+  die("
+  <div style='margin-top:100px; text-align:center;'>
+  <h1>Nie posiadasz uprawnień do tej strony!</h1>
+  <br><br>
+  <a href='../profile'>
+  <button style='width: 150px;height: 50px;font-size: 20px;background-color: transparent;border: 1px solid black;border-radius: 15px;'>
+  Powrót
+  </button>
+  </a>
+  </div>
+  
+  ");
 }
+
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,9 +50,11 @@ $_SESSION['wybrane']=$pytania;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz</title>
     <style>
-        body{
-            margin-bottom: 200px;
-        }
+
+  body{
+    margin-bottom:200px;
+  }
+
 .przycisk{width: 150px;
 height: 50px;
 font-size: 20px;
@@ -67,107 +66,76 @@ border-radius: 15px;}
                 color:white;
                 transition-duration: 0.4s;
             }
-            .srodek{
-            display: flex;
-            justify-content: center;
-            margin-top:150px;
-        }
+            th, td {
+  border: 0px solid black;
+  padding-right:20px;
+  text-align:left;
+}
+table {
+  border-spacing: 0px;
+}
 
-        .pytanie{
-            border: 1px solid black;
-    height: auto;
-    width: auto;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    text-align: center;
-    border-radius: 15px;
-        }
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  /*width: 100%;*/
+  width:700px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
 
-        .labelka{
-            border: 1px solid black;
-            padding: 10px 10px 10px 10px;
-    display: flex;
-    border-radius: 10px;
-        }
+.active, .collapsible:hover {
+  background-color: #555;
+}
 
-        .labelka:hover{
-            background-color: #4f4e4e;
-            border-color: white;
-            color:white;
-            scale:1.05;
-            transition-duration: 0.5s;
-        }
+.collapsible:after {
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
 
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding-top:0px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+  /*width:736px;*/
+}
+.tb{
+  display: inline-block;
+  width: 140px;
+}
+.tx{
+  display: inline-block;
+  width: 70px;
+}
 </style>
 </head>
 <body>
-
-<?php if ($mode=='play'){?>
     <div style='margin-bottom:20px; border-bottom:2px solid black; height:30px;'>
-    <span style='float:left;'><a href='../profile' style='text-decoration:none;'>Profil</a></span>
+    <span style='float:left;'><a href='../app' style='text-decoration:none;'>Quiz</a></span>
     <span style='float:right;'><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
     
     </div>
-<div style="display: flex; justify-content: center;">
-<form action='../php/quizcheck.php' method='post' style="width: 100%; padding: 0px 100px 0px 100px;">
-
-<?php
-
-foreach ($pytania as $pytanie){
-    $zapytanie = mysqli_query($connection, " SELECT * FROM pytania WHERE id='$pytanie' ");
-    $row=mysqli_fetch_array($zapytanie);
-    echo "
-    <p class='pytanie'><b>".$row['tresc']."</b></p>";
-    echo "
-    
-    
-    <label for='1-".$pytanie."' class='labelka'>
-    <input type='radio' id='1-".$pytanie."' name='".$pytanie."' value='a' checked>
-    ".$row['odpa']."
-    </label><br>
-    
-    <label for='2-".$pytanie."' class='labelka'>
-    <input type='radio' id='2-".$pytanie."' name='".$pytanie."' value='b'>
-    ".$row['odpb']."
-    </label><br>
-    
-    <label for='3-".$pytanie."' class='labelka'>
-    <input type='radio' id='3-".$pytanie."' name='".$pytanie."' value='c'>
-    ".$row['odpc']."
-    </label><br>
-    
-    <label for='4-".$pytanie."' class='labelka'>
-    <input type='radio' id='4-".$pytanie."' name='".$pytanie."' value='d'>
-    ".$row['odpd']."
-    </label><br>
-    <br><br><br>
-    ";
-}
-
-echo "
-<div style='text-align:center;'>
-<input type='submit' value='Zakończ' class='przycisk'>
-</div>
-</form>
-</div>";
-
-}else{
-?>
-
-<div class='srodek'>
-    <div style='text-align: center;'>
-    <div>
-    Rozpocznij quiz
-    </div>
-    <div style='margin-top:40px;'>
-        <a href='.?mode=play'><button class='przycisk'>Start</button></a>
-    </div>
-</div>
-
+<div>
+Witaj <?php echo $result['imie']. " " . $result['nazwisko']."!";?>
+<br>
+Twoje poprzednie wyniki:
+<br><br>
 </div>
 
 
-<?php } ?>
+
 </body>
 </html>
 <?php
