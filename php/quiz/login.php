@@ -38,11 +38,11 @@ border-radius: 15px;}
     Logowanie
     </div>
     <div style='margin-top:40px;'>
-    <form action='php/valid.php' method='post'>
-            E-mail:
+    <form action='php/valid.php' method='post' style="text-align: left;">
+            E-mail:<br>
             <input type='email' placeholder='email' name='email'>
             <br><br>
-            Haslo:
+            Haslo:<br>
             <input type='password' placeholder='Haslo' name='haslo'>
             <br><br>
             <input type='submit' value='Potwierdz'>
