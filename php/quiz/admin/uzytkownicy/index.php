@@ -51,6 +51,7 @@ if($result['typ']!="admin"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="modal.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -163,7 +164,8 @@ a:hover{
 }
 .header{
   padding-left: 15px;
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 400;
 
 }
 tr:nth-child(even) {background-color: #f2f2f2;}
@@ -172,8 +174,14 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 }
 </style>
 </head>
-<body>
-  <?php include('../../php/anav.php'); ?>
+  <?php 
+  if(isset($_GET['change'])){
+    echo "<body onload='openmodal()'>";
+  }else{
+    echo"<body>";
+  }
+  
+  include('../../php/anav.php'); ?>
 <div class="master">
 <p class="header">Użytkownicy:</p>
 
@@ -210,6 +218,51 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 
 
+<!--MODAL-->
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Edycja użytkownika</h2>
+    </div>
+    <div class="modal-body">
+      <?php include('modal.php'); ?>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+function openmodal() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  </script>
 </body>
 </html>
 <?php
