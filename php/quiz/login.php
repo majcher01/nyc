@@ -37,7 +37,7 @@ border-radius: 15px;}
     <div>
     Logowanie
     </div>
-    <div style='margin-top:40px;'>
+    <div style='margin-top:40px; display:flex; justify-content: center;'>
     <form action='php/valid.php' method='post' style="text-align: left;">
             E-mail:<br>
             <input type='email' placeholder='email' name='email'>
@@ -61,6 +61,14 @@ border-radius: 15px;}
         echo"
         <div style='margin-top:30px; color: red; text-align:center;'>
         Sesja wygasla, zaloguj sie ponownie.
+        </div>
+
+        ";
+    }
+    if(isset($_GET['registered'])){
+        echo"
+        <div style='margin-top:30px; color: black; text-align:center;'>
+        Zarejestrowano pomyślnie, możesz się zalogować.
         </div>
 
         ";

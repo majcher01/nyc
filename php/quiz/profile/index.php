@@ -34,6 +34,11 @@ $result=mysqli_fetch_array($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz</title>
     <style>
+
+  body{
+    margin-bottom:200px;
+  }
+
 .przycisk{width: 150px;
 height: 50px;
 font-size: 20px;

@@ -33,11 +33,11 @@ border-radius: 15px;}
 <body>
 
 <div class='srodek'>
-    <div style='text-align: center;'>
+    <div style='text-align: center; width:400px;'>
     <div>
     Rejestracja
     </div>
-    <div style='margin-top:40px;'>
+    <div style='margin-top:40px; display:flex; justify-content: center;'>
     <form action='php/rvalid.php' method='post' style='text-align:left;'>
             Imię:<br>
             <input type='text' placeholder='imie' name='imie'>
@@ -55,18 +55,10 @@ border-radius: 15px;}
         </form>
     </div>
     <?php
-    if(isset($_GET['niepoprawne'])){
+    if(isset($_GET['wrongemail'])){
         echo"
         <div style='margin-top:30px; color: red; text-align:center;'>
-        Niepoprawny login lub haslo!
-        </div>
-
-        ";
-    }
-    if(isset($_GET['expired'])){
-        echo"
-        <div style='margin-top:30px; color: red; text-align:center;'>
-        Sesja wygasla, zaloguj sie ponownie.
+        Użytkownik o podanym adresie e-mail istnieje!
         </div>
 
         ";
