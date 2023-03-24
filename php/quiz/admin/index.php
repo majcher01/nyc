@@ -9,14 +9,21 @@ require_once "../php/connect.php";
 
 
 $email=$_SESSION['login'];
+$data=date("Y-m-d");
 
 $connection = new mysqli($host, $dbuser, $dbpass, $dbname);
 if(!$connection){
 die('Błąd bazy danych');
 }
 $query = mysqli_query($connection, "SELECT * FROM `uzytkownicy` WHERE email='$email' ;");
+$uzytkownicyq = mysqli_query($connection, "SELECT * FROM `uzytkownicy`  ;");
+$pytaniaq = mysqli_query($connection, "SELECT * FROM pytania ;");
+$gryq = mysqli_query($connection, "SELECT * FROM wyniki WHERE data='$data' ;");
+$pytania=mysqli_num_rows($pytaniaq);
 //$result = $query->fetch_assoc();
 $result=mysqli_fetch_array($query);
+$uzytkownicy=mysqli_num_rows($uzytkownicyq);
+$gry=mysqli_num_rows($gryq);
 
 if($result['typ']!="admin"){
   $connection->close();
@@ -48,11 +55,16 @@ if($result['typ']!="admin"){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
     <title>quiz</title>
     <style>
 
   body{
-    margin-bottom:200px;
+    margin: 0px 0px 200px 0px;
   }
 
 .przycisk{width: 150px;
@@ -119,19 +131,79 @@ table {
   display: inline-block;
   width: 70px;
 }
+.navel{
+  font-size:24px;
+  padding: 5px 5px 5px 5px;
+  text-align: center;
+}
+.navel:hover{
+  background-color: #4f4e4e;
+  color: white;
+  transition-duration: 0.3s;
+  border-radius: 10px;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: white;
+  transition-duration: 0.3s;
+}
+.master{
+  padding-left:15px;
+}
+.header{
+  padding-left: 15px;
+  font-size: 20px;
+
+}
 </style>
 </head>
 <body>
-    <div style='margin-bottom:20px; border-bottom:2px solid black; height:30px;'>
-    <span style='float:left;'><a href='../app' style='text-decoration:none;'>Quiz</a></span>
-    <span style='float:right;'><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
-    
+  <?php include('../php/anav.php'); ?>
+<div class="master">
+<p class="header">Panel administracyjny aplikacji</p>
+
+<div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-red w3-padding-16">
+        <div class="w3-left"><i class=" fa fa-question w3-xxxlarge"></i></div>
+        <div class="w3-right">
+          <h3> <?php echo $pytania ?> </h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Pytania w bazie</h4>
+      </div>
     </div>
-<div>
-Witaj <?php echo $result['imie']. " " . $result['nazwisko']."!";?>
-<br>
-Twoje poprzednie wyniki:
-<br><br>
+    <div class="w3-quarter">
+      <div class="w3-container w3-blue w3-padding-16">
+        <div class="w3-left"><i class="fa fa-gamepad w3-xxxlarge"></i></div>
+        <div class="w3-right">
+          <h3> <?php echo $gry ?> </h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Liczba dzisiejszych gier</h4>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-orange w3-text-white w3-padding-16">
+        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+        <div class="w3-right">
+          <h3><?php echo $uzytkownicy ?></h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Użytkownicy</h4>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
 </div>
 
 

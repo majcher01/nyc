@@ -54,7 +54,7 @@ $_SESSION['wybrane']=$pytania;
     <title>quiz</title>
     <style>
         body{
-            margin-bottom: 200px;
+            margin: 0px 0px 200px 0px;
         }
 .przycisk{width: 150px;
 height: 50px;
@@ -97,15 +97,34 @@ border-radius: 15px;}
             scale:1.05;
             transition-duration: 0.5s;
         }
+        .navel{
+  font-size:24px;
+  padding: 5px 5px 5px 5px;
+  text-align: center;
+}
+.navel:hover{
+  background-color: #4f4e4e;
+  color: white;
+  transition-duration: 0.3s;
+  border-radius: 10px;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: white;
+  transition-duration: 0.3s;
+}
 
 </style>
 </head>
 <body>
 
 <?php if ($mode=='play'){?>
-    <div style='margin-bottom:20px; border-bottom:2px solid black; height:30px;'>
-    <span style='float:left;'><a href='../profile' style='text-decoration:none;'>Profil</a></span>
-    <span style='float:right;'><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
+    <div style='margin-bottom:20px; border-bottom:2px solid black; height:40px; padding: 5px 5px 5px 5px;'>
+    <span style='float:left;' class="navel"><a href='../profile' style='text-decoration:none;'>Profil</a></span>
+    <span style='float:right;' class="navel"><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
     
     </div>
 <div style="display: flex; justify-content: center;">

@@ -18,7 +18,7 @@ $query = mysqli_query($connection, "SELECT * FROM `uzytkownicy` WHERE email='$em
 //$result = $query->fetch_assoc();
 $result=mysqli_fetch_array($query);
 
-
+$typ=$result['typ'];
 
 
 
@@ -37,6 +37,9 @@ $result=mysqli_fetch_array($query);
 
   body{
     margin-bottom:200px;
+    margin-top: 0px;
+    margin-left:0px;
+    margin-right:0px;
   }
 
 .przycisk{width: 150px;
@@ -103,15 +106,45 @@ table {
   display: inline-block;
   width: 70px;
 }
+.navel{
+  font-size:24px;
+  padding: 5px 5px 5px 5px;
+  text-align: center;
+}
+.navel:hover{
+  background-color: #4f4e4e;
+  color: white;
+  transition-duration: 0.3s;
+  border-radius: 10px;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: white;
+  transition-duration: 0.3s;
+}
+.master{
+  padding-left: 15px;
+}
 </style>
 </head>
 <body>
-    <div style='margin-bottom:20px; border-bottom:2px solid black; height:30px;'>
-    <span style='float:left;'><a href='../app' style='text-decoration:none;'>Quiz</a></span>
-    <span style='float:right;'><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
+    <div style='margin-bottom:20px; border-bottom:2px solid black; height:40px; padding: 5px 5px 5px 5px;'>
+    <span style='float:left;' class="navel"><a href='../app/' style='text-decoration:none;'>Quiz</a></span>
+   <?php if($typ=='admin'){
+    echo " 
+    <span style='float:left;' class='navel'><a href='../admin' style='text-decoration:none;'>Panel administracyjny</a></span>
+    ";
+   }
+   ?>
+   
+
+    <span style='float:right;' class="navel"><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
     
     </div>
-<div>
+<div class="master">
 Witaj <?php echo $result['imie']. " " . $result['nazwisko']."!";?>
 <br>
 Twoje poprzednie wyniki:
@@ -129,7 +162,7 @@ echo "
 <span class='tx'>Wynik</span>
 <span class='tx'></span>
 </div>
-<br><br>";
+<br>";
 while($row=mysqli_fetch_array($r2)){
   /*
 echo"<tr>";
@@ -230,7 +263,9 @@ if($rp5['odp5']!=$rp5['odppoprawna']){
 }else{$c++;}
 
 if($c==5){
-  echo "Brak, gratulujemy!";
+  echo "Brak, gratulujemy!
+  <br><br>
+  ";
 }
 echo"
 </div>

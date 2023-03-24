@@ -18,6 +18,8 @@ $connection->close();
 
 
 if($rekordy==1){
+    $user=mysqli_fetch_array($query);
+    $typ=$user['typ'];
 session_start();
 //generacja ranom stringa do value cookiesa
 $_SESSION['login']=$email;
@@ -32,7 +34,11 @@ $cookie_n_sesja = "sesja";                                                      
                                 $_SESSION['start'] = time(); // Taking now logged in time.
                 // Ending a session in given period of time from the starting time.
                 $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-                                header('Location: ../app');
+                if($typ=='admin'){
+                    header('Location: ../admin');
+                }else{
+                    header('Location: ../app');
+                }
 }else{
     header('Location: ../login.php?niepoprawne=true');
 }
