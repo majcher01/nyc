@@ -70,6 +70,31 @@ border-radius: 15px;}
             margin-top:150px;
         }
 
+        .pytanie{
+            border: 1px solid black;
+    height: auto;
+    width: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    border-radius: 15px;
+        }
+
+        .labelka{
+            border: 1px solid black;
+            padding: 10px 10px 10px 10px;
+    display: flex;
+    border-radius: 10px;
+        }
+
+        .labelka:hover{
+            background-color: #4f4e4e;
+            border-color: white;
+            color:white;
+            scale:1.01;
+            transition-duration: 0.5s;
+        }
+
 </style>
 </head>
 <body>
@@ -80,8 +105,8 @@ border-radius: 15px;}
     <span style='float:right;'><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
     
     </div>
-<div>
-<form action='../php/quizcheck.php' method='post'>
+<div style="display: flex; justify-content: center;">
+<form action='../php/quizcheck.php' method='post' style="width: 100%; padding: 0px 100px 0px 100px;">
 
 <?php
 
@@ -89,17 +114,29 @@ foreach ($pytania as $pytanie){
     $zapytanie = mysqli_query($connection, " SELECT * FROM pytania WHERE id='$pytanie' ");
     $row=mysqli_fetch_array($zapytanie);
     echo "
-    <p><b>".$row['tresc']."</b></p>";
+    <p class='pytanie'><b>".$row['tresc']."</b></p>";
     echo "
     
+    
+    <label for='1-".$pytanie."' class='labelka'>
     <input type='radio' id='1-".$pytanie."' name='".$pytanie."' value='a' checked>
-    <label for='1-".$pytanie."'>".$row['odpa']."</label><br>
+    ".$row['odpa']."
+    </label><br>
+    
+    <label for='2-".$pytanie."' class='labelka'>
     <input type='radio' id='2-".$pytanie."' name='".$pytanie."' value='b'>
-    <label for='2-".$pytanie."'>".$row['odpb']."</label><br>
+    ".$row['odpb']."
+    </label><br>
+    
+    <label for='3-".$pytanie."' class='labelka'>
     <input type='radio' id='3-".$pytanie."' name='".$pytanie."' value='c'>
-    <label for='3-".$pytanie."'>".$row['odpc']."</label><br>
+    ".$row['odpc']."
+    </label><br>
+    
+    <label for='4-".$pytanie."' class='labelka'>
     <input type='radio' id='4-".$pytanie."' name='".$pytanie."' value='d'>
-    <label for='4-".$pytanie."'>".$row['odpd']."</label><br>
+    ".$row['odpd']."
+    </label><br>
     <br><br><br>
     ";
 }
