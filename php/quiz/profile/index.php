@@ -114,6 +114,7 @@ Twoje poprzednie wyniki:
 <?php
 $uid=$result['id'];
 $r2=mysqli_query($connection, " SELECT * FROM wyniki WHERE userid='$uid' ");
+if(mysqli_num_rows($r2)>0){
 echo "
 <div>
 <span class='tb'>Data</span>
@@ -231,7 +232,9 @@ echo"
 ";
 //SELECT pytania.tresc, wyniki.odp1, pytania.odppoprawna FROM `wyniki` JOIN pytania ON wyniki.idp1=pytania.id;
 }
-
+}else{
+  echo "Brak, zagraj aby zobaczyć wyniki.";
+}
 ?>
 </div>
 
