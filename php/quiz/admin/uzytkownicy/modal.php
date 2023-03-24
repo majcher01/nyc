@@ -29,7 +29,7 @@ Nazwisko: <input type='text' name='anazwisko' placeholder="<?php echo $user['naz
     <span style='float: left'>
 E-mail: <input type='email' name='aemail' placeholder="<?php echo $user['email'] ?>">
 </span>
-    <span style='float: left; margin-left:20px;'>
+    <span style='float: left; margin-left:0px;'>
 Hasło: <input type='password' name='ahaslo'>
 </span>
     </div>
