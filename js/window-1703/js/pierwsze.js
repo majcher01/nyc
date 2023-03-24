@@ -1,1 +1,0 @@
-document.getElementById("pierwsze").innerHTML="wewnetrzna wysokosc: "+window.innerHeight+"<br><br> wewnetrzna szerokosc: "+window.innerWidth+"<br><br> zewnetrzna wysokosc: "+window.outerHeight+"<br><br> zewnetrzna szerokosc: "+window.outerWidth;
