@@ -120,6 +120,11 @@ a:hover{
   transition-duration: 0.3s;
 }
 
+input[type='radio']{
+    margin-right: 10px;
+}
+
+
 </style>
 </head>
 <body>
@@ -130,8 +135,8 @@ a:hover{
     <span style='float:right;' class="navel"><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
     
     </div>
-<div style="display: flex; justify-content: center;">
-<form action='../php/quizcheck.php' method='post' style="width: 800px; padding: 0px 100px 0px 100px;">
+<div style="display: flex; justify-content: center;"> 
+<form action='../php/quizcheck.php' method='post' style="width: 800px; padding: 0px 100px 0px 100px;" class="klasa">
 
 <?php
 
