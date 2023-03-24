@@ -5,6 +5,14 @@ if(!isset($_COOKIE[$cookie_name])){
 header('Location: ../php/expired.php');
 }
 
+
+$mode=$_GET['mode'];
+
+if($mode=='play'){
+
+
+
+
 require_once "../php/connect.php";
 
 function UniqueRandomNumbers($min, $max, $quantity) {
@@ -35,7 +43,7 @@ $_SESSION['wybrane']=$pytania;
 
 
 
-
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,10 +64,17 @@ border-radius: 15px;}
                 color:white;
                 transition-duration: 0.4s;
             }
+            .srodek{
+            display: flex;
+            justify-content: center;
+            margin-top:150px;
+        }
 
 </style>
 </head>
 <body>
+
+<?php if ($mode=='play'){?>
     <div style='margin-bottom:20px; border-bottom:2px solid black; height:30px;'>
     <span style='float:left;'><a href='../profile' style='text-decoration:none;'>Profil</a></span>
     <span style='float:right;'><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
@@ -89,11 +104,29 @@ foreach ($pytania as $pytanie){
     ";
 }
 
+echo "
+<input type='submit' value='Potwierdz' class='przycisk'>
+
+</form>
+</div>";
+
+}else{
 ?>
 
-<input type='submit' value='Potwierdz' class='przycisk'>
-</form>
+<div class='srodek'>
+    <div style='text-align: center;'>
+    <div>
+    Rozpocznij quiz
+    </div>
+    <div style='margin-top:40px;'>
+        <a href='.?mode=play'><button class='przycisk'>Start</button></a>
+    </div>
 </div>
+
+</div>
+
+
+<?php } ?>
 </body>
 </html>
 <?php
