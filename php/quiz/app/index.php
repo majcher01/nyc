@@ -53,6 +53,9 @@ $_SESSION['wybrane']=$pytania;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz</title>
     <style>
+        body{
+            margin-bottom: 200px;
+        }
 .przycisk{width: 150px;
 height: 50px;
 font-size: 20px;
@@ -91,7 +94,7 @@ border-radius: 15px;}
             background-color: #4f4e4e;
             border-color: white;
             color:white;
-            scale:1.01;
+            scale:1.05;
             transition-duration: 0.5s;
         }
 
@@ -142,8 +145,9 @@ foreach ($pytania as $pytanie){
 }
 
 echo "
-<input type='submit' value='Potwierdz' class='przycisk'>
-
+<div style='text-align:center;'>
+<input type='submit' value='Zakończ' class='przycisk'>
+</div>
 </form>
 </div>";
 
