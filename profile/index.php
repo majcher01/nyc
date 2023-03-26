@@ -135,7 +135,7 @@ a:hover{
 </head>
 <body>
     <div style='margin-bottom:20px; border-bottom:2px solid black; height:40px; padding: 5px 5px 5px 5px;'>
-    <span style='float:left;' class="navel"><a href='/app' style='text-decoration:none;'>Quiz</a></span>
+    <span style='float:left;' class="navel"><a href='/app' style='text-decoration:none;'>Przejdź do quizu</a></span>
    <?php if($typ=='admin'){
     echo " 
     <span style='float:left;' class='navel'><a href='/admin' style='text-decoration:none;'>Panel administracyjny</a></span>

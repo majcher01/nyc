@@ -101,9 +101,9 @@ border-radius: 15px;}
     Aby zobaczyć historię wyników przejdź do swojego profilu.
     </div>
     <div style='margin-top:40px;'>
-        <a href='/profile'><button class='przycisk'>Profil</button></a>
+        <a href='/profile'><button class='przycisk'>Przejdź do profilu</button></a>
         <br><br>
-        <a href='/app'><button class='przycisk'>Quiz</button></a>
+        <a href='/app'><button class='przycisk'>Powtórz quiz</button></a>
     </div>
 </div>
 
