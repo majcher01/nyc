@@ -131,8 +131,8 @@ input[type='radio']{
 
 <?php if ($mode=='play'){?>
     <div style='margin-bottom:20px; border-bottom:2px solid black; height:40px; padding: 5px 5px 5px 5px; font-family:Verdana, sans-serif;'>
-    <span style='float:left;' class="navel"><a href='../profile' style='text-decoration:none;'>Profil</a></span>
-    <span style='float:right;' class="navel"><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
+    <span style='float:left;' class="navel"><a href='/profile' style='text-decoration:none;'>Profil</a></span>
+    <span style='float:right;' class="navel"><a href='/php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
     
     </div>
 <div style="display: flex; justify-content: center;"> 
