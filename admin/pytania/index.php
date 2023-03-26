@@ -234,7 +234,7 @@ tr:nth-child(even) {background-color: #ffffff;}
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Edycja użytkownika</h2>
+      <h2>Edycja pytania</h2>
     </div>
     <div class="modal-body">
       <?php include('modal.php'); ?>
