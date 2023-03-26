@@ -2,7 +2,7 @@
 session_start();
 $cookie_name = "sesja";
 if(!isset($_COOKIE[$cookie_name])){
-header('Location: ../php/expired.php');
+header('Location: ../../php/expired.php');
 }
 
 require_once "../../php/connect.php";
