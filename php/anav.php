@@ -1,4 +1,14 @@
-<div style='margin-bottom:20px; border-bottom:2px solid black; height:60px; padding: 5px 5px 5px 5px;'>
+<head>
+    <style>
+
+*, *:before, *:after {
+     box-sizing: initial;
+}
+</style>
+</head>
+
+
+<div style='margin-bottom:20px; border-bottom:2px solid black; height:40px; padding: 5px 5px 5px 5px; font-family: Verdana, sans-serif;' >
     <span style='float:left;' class="navel"><a href='.' style='text-decoration:none;'>Podsumowanie</a></span>
     <span style='float:left;' class="navel"><a href='./uzytkownicy' style='text-decoration:none;'>Użytkownicy</a></span>
     <span style='float:left;' class="navel"><a href='./wyniki' style='text-decoration:none;'>Wyniki</a></span>

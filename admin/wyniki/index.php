@@ -5,10 +5,11 @@ if(!isset($_COOKIE[$cookie_name])){
 header('Location: ../php/expired.php');
 }
 
-require_once "../php/connect.php";
+require_once "../../php/connect.php";
 
 
 $email=$_SESSION['login'];
+$data=date("Y-m-d");
 
 $connection = new mysqli($host, $dbuser, $dbpass, $dbname);
 if(!$connection){
@@ -18,7 +19,25 @@ $query = mysqli_query($connection, "SELECT * FROM `uzytkownicy` WHERE email='$em
 //$result = $query->fetch_assoc();
 $result=mysqli_fetch_array($query);
 
-$typ=$result['typ'];
+$queryU = mysqli_query($connection, "SELECT * FROM `uzytkownicy` ;");
+
+if($result['typ']!="admin"){
+  $connection->close();
+  die("
+  <div style='margin-top:100px; text-align:center;'>
+  <h1>Nie posiadasz uprawnień do tej strony!</h1>
+  <br><br>
+  <a href='../profile'>
+  <button style='width: 150px;height: 50px;font-size: 20px;background-color: transparent;border: 1px solid black;border-radius: 15px;'>
+  Powrót
+  </button>
+  </a>
+  </div>
+  
+  ");
+}
+
+
 
 
 
@@ -32,16 +51,24 @@ $typ=$result['typ'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/bg.css" type="text/css">
+    <link rel="stylesheet" href="../../assets/bg.css" type="text/css">
+    <link rel="stylesheet" href="modal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
     <title>quiz</title>
     <style>
 
   body{
-    margin-bottom:200px;
-    margin-top: 0px;
-    margin-left:0px;
-    margin-right:0px;
+    margin: 0px 0px 200px 0px;
   }
+
+html, body {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
 
 .przycisk{width: 150px;
 height: 50px;
@@ -54,6 +81,19 @@ border-radius: 15px;}
                 color:white;
                 transition-duration: 0.4s;
             }
+.przycisk2{width: 150px;
+height: 30px;
+width: 70px;
+font-size: 18px;
+background-color: transparent;
+border: 1px solid black;
+border-radius: 15px;}
+            .przycisk2:hover{
+                background-color: black;
+                color:white;
+                transition-duration: 0.4s;
+            }
+
             th, td {
   border: 0px solid black;
   padding-right:20px;
@@ -111,7 +151,6 @@ table {
   font-size:24px;
   padding: 5px 5px 5px 5px;
   text-align: center;
-  font-family: Verdana, sans-serif;
 }
 .navel:hover{
   background-color: #4f4e4e;
@@ -122,38 +161,52 @@ table {
 a{
   text-decoration: none;
   color: black;
-  font-family: Verdana, sans-serif;
 }
 a:hover{
   color: white;
   transition-duration: 0.3s;
 }
 .master{
-  padding-left: 15px;
+  padding-left:15px;
 }
+.header{
+  font-size: 24px;
+  font-weight: 400;
+
+}
+
 </style>
 </head>
-<body>
-    <div style='margin-bottom:20px; border-bottom:2px solid black; height:40px; padding: 5px 5px 5px 5px;'>
-    <span style='float:left;' class="navel"><a href='../app/' style='text-decoration:none;'>Quiz</a></span>
-   <?php if($typ=='admin'){
-    echo " 
-    <span style='float:left;' class='navel'><a href='../admin' style='text-decoration:none;'>Panel administracyjny</a></span>
-    ";
-   }
-   ?>
-   
-
-    <span style='float:right;' class="navel"><a href='../php/logout.php' style='text-decoration:none;'>Wyloguj</a></span>
-    
-    </div>
+  <?php 
+  if(isset($_GET['change'])){
+    echo "<body onload='openmodal()'>";
+  }else{
+    echo"<body>";
+  }
+  
+  include('../../php/anav.php'); ?>
 <div class="master">
-Witaj <?php echo $result['imie']. " " . $result['nazwisko']."!";?>
-<br>
-Twoje poprzednie wyniki:
-<br><br>
+<p class="header">Wybierz użytkownika:</p>
+<form method='get' action='.' style='margin-bottom:20px;'>
+<select name="selecteduser">
+  <?php
+  while($row=mysqli_fetch_array($queryU)){
+    echo "<option value='".$row['id']."'>".$row['imie']." ".$row['nazwisko']."</option>";
+  }
+  ?>
+</select>
+<input type="submit" value="Potwierdź">
+</form>
+
+
 <?php
-$uid=$result['id'];
+
+
+if(isset($_GET['selecteduser'])){
+
+
+
+$uid=$_GET['selecteduser'];
 $r2=mysqli_query($connection, " SELECT * FROM wyniki WHERE userid='$uid' ");
 if(mysqli_num_rows($r2)>0){
 echo "
@@ -278,8 +331,23 @@ echo"
 }else{
   echo "Brak, zagraj aby zobaczyć wyniki.";
 }
+
+
+
+}
 ?>
+
+
+
+
+
+
+
+
+
 </div>
+
+
 
 
 
@@ -300,6 +368,7 @@ for (i = 0; i < coll.length; i++) {
 }
 
 </script>
+
 </body>
 </html>
 <?php

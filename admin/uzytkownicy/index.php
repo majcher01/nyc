@@ -169,9 +169,10 @@ a:hover{
   font-weight: 400;
 
 }
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {background-color: #ffffff;}
 .utb{
   font-size:20px;
+  background-color: #bfbfbf;
 }
 </style>
 </head>
