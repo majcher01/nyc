@@ -39,7 +39,13 @@ if($result['typ']!="admin"){
 
 
 
-
+if(isset($_GET['error'])){
+echo "
+<script>
+alert('Uzytkownik o podanym adresie e-mail istnieje!');
+</script>
+";
+}
 
 
 
@@ -212,7 +218,13 @@ tr:nth-child(even) {background-color: #ffffff;}
 </div>
 
 
+<p class="header">Dodaj użytkownika:</p>
 
+<div style="padding-left:15px;padding-right:15px;">
+
+<a href="../../php/addusr.php"><button class='przycisk'>Dodaj</button></a>
+
+</div>
 
 
 

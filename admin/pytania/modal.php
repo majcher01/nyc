@@ -3,7 +3,7 @@ session_start();
 
 $current=$_SESSION['login'];
 
-require_once "/php/connect.php";
+require_once "../../php/connect.php";
 
 $uid=$_GET['uid'];
 

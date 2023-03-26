@@ -19,6 +19,13 @@ $connection = new mysqli($host, $dbuser, $dbpass, $dbname);
 if(!$connection){
 die('Błąd bazy danych');
 }
+
+$q2=mysqli_query($connection, " SELECT * FROM uzytkownicy WHERE email='$aemail'; ");
+$liczba=mysqli_num_rows($q2);
+
+
+
+
 $query = mysqli_query($connection, " UPDATE `uzytkownicy` SET `imie` = '$aimie', `nazwisko` = '$anazwisko', `email` = '$aemail', `typ` = '$atyp' WHERE `uzytkownicy`.`id` = $uid; ");
 
 if(!empty($ahaslo)){
@@ -32,7 +39,6 @@ if(!empty($ahaslo)){
 $connection->close();
 
 header('Location: ../admin/uzytkownicy');
-
 
 
 ?>
