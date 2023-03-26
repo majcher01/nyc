@@ -185,7 +185,7 @@ tr:nth-child(even) {background-color: #ffffff;}
   
   include('../../php/anav.php'); ?>
 <div class="master">
-<p class="header">Użytkownicy:</p>
+<p class="header">Pytania:</p>
 
 <div style="padding-left:15px;padding-right:15px;">
   <table class="utb">
@@ -215,6 +215,16 @@ tr:nth-child(even) {background-color: #ffffff;}
       }
     ?>
   </table>
+</div>
+
+
+
+<p class="header">Dodaj pytanie:</p>
+
+<div style="padding-left:15px;padding-right:15px;">
+
+<a href="../../php/addpyt.php"><button class='przycisk'>Dodaj</button></a>
+
 </div>
 
 
