@@ -73,7 +73,7 @@ $connection->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wyniki</title>
     <style>
-.przycisk{width: 150px;
+.przycisk{width: 200px;
 height: 50px;
 font-size: 20px;
 background-color: transparent;
