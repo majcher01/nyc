@@ -148,9 +148,9 @@ a:hover{
     
     </div>
 <div class="master">
-Witaj <?php echo $result['imie']. " " . $result['nazwisko']."!";?>
+<h2 style='    font-weight: 100;font-family: Verdana, sans-serif;'>Witaj <?php echo $result['imie']. " " . $result['nazwisko']."!";?>
 <br>
-Twoje poprzednie wyniki:
+Twoje poprzednie wyniki:</h2>
 <br><br>
 <?php
 $uid=$result['id'];

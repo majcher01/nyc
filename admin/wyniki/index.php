@@ -189,6 +189,7 @@ a:hover{
 <p class="header">Wybierz użytkownika:</p>
 <form method='get' action='.' style='margin-bottom:20px;'>
 <select name="selecteduser">
+  <option value="x">Wybierz</option>
   <?php
   while($row=mysqli_fetch_array($queryU)){
     echo "<option value='".$row['id']."'>".$row['imie']." ".$row['nazwisko']."</option>";
@@ -202,7 +203,7 @@ a:hover{
 <?php
 
 
-if(isset($_GET['selecteduser'])){
+if(isset($_GET['selecteduser']) && ($_GET['selecteduser']!="x")){
 
 
 
