@@ -22,7 +22,7 @@ if($rekordy==0){
 
 
 
-mysqli_query($connection, "INSERT INTO `uzytkownicy` (`id`, `imie`, `nazwisko`, `email`, `haslo`, `typ`) VALUES (NULL, '$imie', '$nazwisko', '$email', '$shapass', 'user');");
+mysqli_query($connection, "INSERT INTO `uzytkownicy` (`id`, `imie`, `nazwisko`, `email`, `haslo`, `typ`, `aktywny`) VALUES (NULL, '$imie', '$nazwisko', '$email', '$shapass', 'user', 1);");
 //$result = $query->fetch_assoc();
 $connection->close();
 
