@@ -62,7 +62,7 @@ if(count($_COOKIE) > 0) {
 
 #### Start i zmienne sesji
 
-`session_start()`<br>
+`session_start()<br>`
 `$_SESSION[];`
 
 zeby odczytac zmienne sesji na innej stronie to musza byc session_start(); no i trzeba przeczytac odpowiednia zmienna np. `$_SESSION['test'];`
@@ -81,7 +81,7 @@ $_SESSION['test']='xd';
 
 #### Konczenie sesji
 
-`session_unset();` - usuwa wszystkie zmienne sesji<br>
+`session_unset();` - usuwa wszystkie zmienne sesji `<br>`
 `session_destroy();` - usuwa sesje
 
 # Operacje na plikach
@@ -100,12 +100,87 @@ echo readfile('plik.txt');
 
 #### Otwieranie pliku - `fopen()`
 
-ma 2 parametry - pierwszy to nazwa pliku, drugi to tryb w jakim otwieramy\
+ma 2 parametry - pierwszy to nazwa pliku, drugi to tryb w jakim otwieramy
 
+przyklad otwarcia pliku, tu jest `or die()` - to wyswietla komunikat w przypadku bledu w otweiraniu
 
+```php
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fread($myfile,filesize("webdictionary.txt"));
+fclose($myfile);
+?>
+```
 
+##### Tryby otwierania
 
+![](tabeleczka.png)
 
+#### Czytanie zawartosci - `fread()`
+
+tez ma 2 parametry - pierwszy to nazwa pliku, drugi to maksymalna liczba bajtow do przeczytania
+
+przyklad przeczytania calego pliku
+
+```php
+fread($myfile,filesize('plik.txt'));
+//gdzie $myfile to fopen(), patrz przyklad wyzej
+```
+
+#### Zamykanie pliku - `fclose()`
+
+po prostu zamyka plik<br>
+`fclose($myfile);`
+
+#### Czytanie pojedynczych linii - `fgets()`
+
+przyklad wyswietlenia tylko pierwszej linii pliku
+
+```php
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fgets($myfile);
+fclose($myfile);
+?>
+```
+
+Mozna to polaczyc z `feof()` zeby czytac linia po linii do konca pliku<br>
+przyklad
+
+```php
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// Output one line until end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+?>
+```
+
+#### Pojedynczy znak - `fgetc()`
+
+wyswietla pojedynczy znak, mozna tak samo polaczyc z whilem zeby wyswietlal caly plik po jednym znaku<br>
+przyklad wyswietlenia calego pliku po jednym znaku
+
+```php
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// Output one character until end-of-file
+while(!feof($myfile)) {
+  echo fgetc($myfile);
+}
+fclose($myfile);
+?>
+```
+
+#### Tworzenie pliku
+
+tutaj `fopen()` w odpowiednim trybie<br>
+np `$plik=fopen('plik.txt', 'w');`<br>
+jak nie dziala to pewnie brak uprawnien, patrz w logi
+
+#### Zapisywanie do pliku - `fwrite()`
 
 
 
