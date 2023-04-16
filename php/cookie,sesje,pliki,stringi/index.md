@@ -62,7 +62,7 @@ if(count($_COOKIE) > 0) {
 
 #### Start i zmienne sesji
 
-`session_start()`\
+`session_start()`
 `$_SESSION[];`
 
 zeby odczytac zmienne sesji na innej stronie to musza byc session_start(); no i trzeba przeczytac odpowiednia zmienna np. `$_SESSION['test'];`
@@ -81,6 +81,32 @@ $_SESSION['test']='xd';
 
 #### Konczenie sesji
 
-`session_unset();` - usuwa wszystkie zmienne sesji\
+`session_unset();` - usuwa wszystkie zmienne sesji
 `session_destroy();` - usuwa sesje
+
+# Operacje na plikach
+
+#### Wyswietlenie zawartosci pliku sposob 1
+
+mozna uzyc funkcji `readfile();` - dziala ale ta funkcja jest dosyc ograniczona\
+
+przyklad
+
+```php
+<?php
+echo readfile('plik.txt');
+?>
+```
+
+#### Otwieranie pliku - `fopen()`
+
+ma 2 parametry - pierwszy to nazwa pliku, drugi to tryb w jakim otwieramy\
+
+
+
+
+
+
+
+
 
