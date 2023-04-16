@@ -182,6 +182,23 @@ jak nie dziala to pewnie brak uprawnien, patrz w logi
 
 #### Zapisywanie do pliku - `fwrite()`
 
+ma 2 parametry, pierwszy - plik (zmienna z fopen()), drugi string do zapisania<br>
+przyklad
+
+```php
+<?php
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+$txt = "John Doe\n";
+fwrite($myfile, $txt);
+$txt = "Jane Doe\n";
+fwrite($myfile, $txt);
+fclose($myfile);
+?>
+```
+
+tu jest `w` w `fopen()` co oznacza ze usunie sie biezaca zawartosc pliku, jezeli chcemy zostawic zawartosc to otwieramy w trybie `a`
+
+
 
 
 
