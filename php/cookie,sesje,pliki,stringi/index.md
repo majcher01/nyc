@@ -200,8 +200,86 @@ tu jest `w` w `fopen()` co oznacza ze usunie sie biezaca zawartosc pliku, jezeli
 
 # Operacje na stringach
 
-wszystkiego tu nie opisze wiec to sie przyda <https://www.w3schools.com/php/php_ref_string.asp>
+wszystkiego tu nie opisze wiec to sie przyda [https://www.w3schools.com/php/php_ref_string.asp](https://www.w3schools.com/php/php_ref_string.asp)
 
+#### `strlen()`
+
+zwraca dlugosc stringa
+
+```php
+<?php
+echo strlen("Hello world!"); // outputs 12
+?>
+```
+
+#### `str_word_count()`
+
+zwraca ilosc wyrazow
+
+```php
+<?php
+echo str_word_count("Hello world!"); // outputs 2
+?>
+```
+
+#### `strrev()`
+
+odwraca string
+
+```php
+<?php
+echo strrev("Hello world!"); // outputs !dlrow olleH
+?>
+```
+
+#### `strpos()`
+
+szuka znaku w stringu, jak znajdzie zwraca miejsce na ktorym sie znajduje pierwszy, jak nie to zwraca FALSE
+
+```php
+<?php
+echo strpos("Hello world!", "world"); // outputs 6
+?>
+```
+
+#### `str_replace()`
+
+zamienia znaki na inne<br>
+syntax:<Br>
+`str_replace(find,replace,string,count)`
+<br>
+![](tabeleczka2.png)
+<Br>
+
+```php
+<?php
+echo str_replace("world", "Dolly", "Hello world!"); // outputs Hello Dolly!
+?>
+```
+
+#### `trim()`, `ltrim()`, `rtrim()`
+
+funkcje do usuwania znakow<br>
+`trim()` - z obu stron<br>
+`ltrim()` - z lewej<br>
+`rtrim()` - z prawej<br>
+
+syntax:<br>
+`trim(string,charlist)`
+<br>
+![](tabeleczka3.png)
+<br>
+przyklad `trim()`
+
+```php
+<?php
+$str = "Hello World!";
+echo $str . "<br>";
+echo trim($str,"Hed!");
+?>
+
+//Output: Ilo Worl
+```
 
 
 
