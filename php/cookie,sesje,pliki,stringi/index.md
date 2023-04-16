@@ -198,6 +198,9 @@ fclose($myfile);
 
 tu jest `w` w `fopen()` co oznacza ze usunie sie biezaca zawartosc pliku, jezeli chcemy zostawic zawartosc to otwieramy w trybie `a`
 
+# Operacje na stringach
+
+wszystkiego tu nie opisze wiec to sie przyda [[https://www.w3schools.com/php/php_ref_string.asp]]
 
 
 
