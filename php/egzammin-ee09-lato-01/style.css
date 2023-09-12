@@ -1,0 +1,43 @@
+body{
+    margin: 0px;
+    height: 100%;
+}
+
+.naglowek{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content{
+height:800px;
+}
+
+.stopka{
+height:50px;
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.spanlewy2{
+    background-color: #7fff7f;
+}
+
+.spanlewy{
+    display: inline-block;
+    width:40%;
+    height:100%;
+    background-color: yellow;
+}
+
+
+.spanprawy{
+    display: inline-block;
+    width:58%;
+    background-color: green;
+    height:100%;
+}
