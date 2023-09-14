@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+Poczatkowy wyraz: <input type="number" id="start">
+<br>
+Liczba wyrazow: <input type="number" id="wyrazy">
+<br>
+
+<button onclick="policz()">Policz</button>
+<br><br>
+Wynik:<span id="wynik"></span>
+
+    <script>
+        
+        function n(l){     //funkcja liczaca n-t wyraz ciagu
+            if(l==0){return 0;}
+            if(l==1){return 1;}
+            return n(l-1)+n(l-2);
+        }   
+          
+function policz() { //funkcja ktora odpala przycisk
+document.getElementById("wynik").innerHTML='';
+let start=parseInt(document.getElementById('start').value);
+let wyrazy=parseInt(document.getElementById('wyrazy').value);
+
+for(i=start;i<=(start+wyrazy);i++){
+    document.getElementById('wynik').innerHTML+=" "+n(i)+", ";
+}
+}
+
+    </script>
+</body>
+</html>
