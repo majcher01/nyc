@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Czy liczba jest pierwsza</title>
+</head>
+<body>
+    
+<h3>Sprawdz czy liczba jest pierwsza</h3>
+<input type="number" id="liczba">
+<button onclick="czypierwsza()">SPRAWDZ</button>
+
+<p id="Wynik"></p>
+    <script>
+        
+        function czypierwsza(){
+            let liczba=document.getElementById("liczba").value;
+            
+            for(i=2;i<=Math.sqrt(liczba);i++){
+                if(liczba%i!=0){
+                    document.getElementById("Wynik").innerHTML="Liczba "+liczba+" jest liczba pierwsza";
+                    return true;
+                }
+            }
+            document.getElementById("Wynik").innerHTML="Liczba "+liczba+" NIE jest liczba pierwsza";
+        }
+        </script>
+</body>
+</html>
