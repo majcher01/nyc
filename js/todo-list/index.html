@@ -14,20 +14,34 @@
             display: flex;
             justify-content: center;  
         }
+        td{
+            padding-right: 40px;
+        }
     </style>
 </head>
 <body>
 
     <div class="main">
         <div style="margin-top: 50px;">
-        <p style="font-size: 32px;">
+        <p style="font-size: 32px; text-align:center;">
             Lista rzeczy do zrobienia
         </p>
-        <p id="zawartosc-p" style="text-align: left; height: 400px; overflow: auto; padding-left: 20px;">
-
+        <p id="zawartosc-p" style="text-align: center; height: 50px; overflow: auto; padding-left: 20px; margin-bottom:0px;">
+            <table id="zawartosc-t" style="    display: flex;justify-content: center;height: 400px;text-align: left;">
+                <tr><th>Treść</th><th>Termin</th><th>Status</th><th></th></tr>
+            </table>
         </p>
-        <p>
-            Tresc: <input type="text" id="nowyelement"><button style="margin-left: 20px;" onclick="dodajf()">DODAJ</button>
+
+
+
+        <p style="text-align: center;">
+            <button style="margin-left: 20px;" onclick="wykonaj()">Wykonaj zaznaczone</button>
+        </p>
+        <p style="text-align: center;">
+            Tresc: <input type="text" id="nowyelement"><br>
+            Termin: <input type="datetime-local" id="nowydata"><br>
+
+            <button style="margin-left: 20px;" onclick="dodajf()">DODAJ</button>
         </p>
 
         </div>
@@ -38,23 +52,109 @@ let zawartosc=localStorage.getItem("zawartosc");
 //console.log(zawartosc);
 //localStorage.setItem("zawartosc", dupa);
 
+if(zawartosc==""){
+    localStorage.removeItem("zawartosc");
+    location.reload();
+}
+
 if(zawartosc==null){
     document.getElementById('zawartosc-p').innerHTML="Lista jest pusta, dodaj element";
+    document.getElementById('zawartosc-t').style.display='none';
 }else{
-    let tekst=zawartosc.split(",");
+    let tekst=zawartosc.split(";");
+    document.getElementById('zawartosc-p').innerHTML="";
+    let tabela = document.getElementById('zawartosc-t');
     for(i=0;i<tekst.length;i++){
-    document.getElementById('zawartosc-p').innerHTML+=(i+1)+". "+tekst[i]+"<br>";
+        let row=tabela.insertRow(-1);
+        row.id="tr-"+i;
+        let cell=tekst[i].split(",");
+        for(l=0;l<(cell.length+1);l++){
+            if(l==1){
+            let icell=row.insertCell(-1);
+            let t=cell[l].replace("T",", ");
+            icell.innerHTML=t;
+            continue;
+            }else if(l==3){
+            let icell=row.insertCell(-1);
+            if(cell[2]!="Wykonano"){
+            icell.innerHTML="<input type='checkbox' id='c-"+(i+1)+"'>";
+            }else{
+            icell.innerHTML="<button onclick='usun("+(i)+")'>Usuń</button>";
+            }
+            continue;
+            }
+            let icell=row.insertCell(-1);
+            icell.innerHTML=cell[l];
+            icell.id="td-"+i+"-"+l;
+        }
+
     }
     
 }
 
+
+function wykonaj(){
+    var rows = document.getElementById("zawartosc-t").rows.length;
+
+    let tabela = document.getElementById('zawartosc-t');
+    
+    for(i=1,j=0;i<rows,j<(rows-1);i++,j++){
+        let cid="c-"+i;
+        console.log(cid);
+        if(document.getElementById(cid)){
+        let checkbox=document.getElementById(cid).checked;
+        if(checkbox){
+            /*let row=tabela.rows[i];
+            let cell=row.cells[2];
+            cell.innerHTML="Wykonane";
+            continue;
+            */
+             
+            let zawartosc=localStorage.getItem("zawartosc");
+            let array=zawartosc.split(";");
+            let nazwa=[];
+            for(k=0;k<array.length;k++){
+                nazwa[k]=array[k].split(",");
+            }
+            nazwa[j][2]="Wykonano";
+           
+            for(o=0;o<nazwa.length;o++){
+                nazwa[o]=nazwa[o].join(",");
+            }
+            nazwa.push(nazwa.splice(j, 1)[0]);
+            let dozapisu=nazwa.join(";");
+            localStorage.setItem("zawartosc", dozapisu);
+           // document.getElementById("tr-"+j).style.opacity='30%';
+            //document.getElementById("td-"+j+"-0").style.textDecoration='line-through';
+
+        }
+    }
+    }
+
+
+
+    location.reload();
+}
+
+
+function usun(rid){
+    let zawartosc=localStorage.getItem("zawartosc");
+    let array=zawartosc.split(";");
+    array.splice(rid, 1);
+    let zapis=array.join(";");
+    localStorage.setItem("zawartosc", zapis);
+    location.reload();
+}
+
 function dodajf(){
     let tresc=document.getElementById('nowyelement').value;
+    let nowydata=document.getElementById('nowydata').value;
+    if(tresc=="" || nowydata==""){return false;}
     if(zawartosc==null){
-        let dodaj=tresc;
+        let dodaj=tresc+","+nowydata+","+"W trakcie";
     localStorage.setItem("zawartosc", dodaj);
     }else{
-        let dodaj=zawartosc+","+tresc;
+        let dodaj=tresc+","+nowydata+","+"W trakcie;"+zawartosc;
     localStorage.setItem("zawartosc", dodaj);
     }
    location.reload(); 
