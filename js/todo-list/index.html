@@ -109,20 +109,25 @@ function wykonaj(){
             cell.innerHTML="Wykonane";
             continue;
             */
-             
+            console.log("obrot nr"+i);
             let zawartosc=localStorage.getItem("zawartosc");
             let array=zawartosc.split(";");
-            let nazwa=[];
+            let nazwa= new Array();
             for(k=0;k<array.length;k++){
-                nazwa[k]=array[k].split(",");
+                let v=array[k].split(",");
+                nazwa[k]=v;
             }
+            console.log(nazwa);
             nazwa[j][2]="Wykonano";
+            console.log(nazwa);
+
            
             for(o=0;o<nazwa.length;o++){
                 nazwa[o]=nazwa[o].join(",");
             }
             nazwa.push(nazwa.splice(j, 1)[0]);
             let dozapisu=nazwa.join(";");
+            console.log(dozapisu);
             localStorage.setItem("zawartosc", dozapisu);
            // document.getElementById("tr-"+j).style.opacity='30%';
             //document.getElementById("td-"+j+"-0").style.textDecoration='line-through';
@@ -133,7 +138,7 @@ function wykonaj(){
 
 
 
-    location.reload();
+   // location.reload();
 }
 
 
