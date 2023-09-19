@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+
+        .main{
+            display: flex;
+            justify-content: center;  
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div style="margin-top: 50px;">
+        <p style="font-size: 32px;">
+            Lista rzeczy do zrobienia
+        </p>
+        <p id="zawartosc-p" style="text-align: left; height: 400px; overflow: auto; padding-left: 20px;">
+
+        </p>
+        <p>
+            Tresc: <input type="text" id="nowyelement"><button style="margin-left: 20px;" onclick="dodajf()">DODAJ</button>
+        </p>
+
+        </div>
+    </div>
+<script>
+let zawartosc=localStorage.getItem("zawartosc");
+
+//console.log(zawartosc);
+//localStorage.setItem("zawartosc", dupa);
+
+if(zawartosc==null){
+    document.getElementById('zawartosc-p').innerHTML="Lista jest pusta, dodaj element";
+}else{
+    let tekst=zawartosc.split(",");
+    for(i=0;i<tekst.length;i++){
+    document.getElementById('zawartosc-p').innerHTML+=(i+1)+". "+tekst[i]+"<br>";
+    }
+    
+}
+
+function dodajf(){
+    let tresc=document.getElementById('nowyelement').value;
+    if(zawartosc==null){
+        let dodaj=tresc;
+    localStorage.setItem("zawartosc", dodaj);
+    }else{
+        let dodaj=zawartosc+","+tresc;
+    localStorage.setItem("zawartosc", dodaj);
+    }
+   location.reload(); 
+
+}
+
+
+</script>
+</body>
+</html>
