@@ -77,7 +77,7 @@ if(zawartosc==null){
             }else if(l==3){
             let icell=row.insertCell(-1);
             if(cell[2]!="Wykonano"){
-            icell.innerHTML="<input type='checkbox' id='c-"+(i+1)+"'>";
+            icell.innerHTML="<input type='checkbox' id='c-"+i+"'>";
             }else{
             icell.innerHTML="<button onclick='usun("+(i)+")'>Usuń</button>";
             }
@@ -95,10 +95,49 @@ if(zawartosc==null){
 
 function wykonaj(){
     var rows = document.getElementById("zawartosc-t").rows.length;
-
     let tabela = document.getElementById('zawartosc-t');
-    
-    for(i=1,j=0;i<rows,j<(rows-1);i++,j++){
+    rows=rows-2;
+
+    let zawartosc=localStorage.getItem("zawartosc");
+
+    console.log(rows);
+
+    for(i=0;i<=rows;i++){
+        let cid="c-"+i;
+        if(document.getElementById(cid) && document.getElementById(cid).checked){
+            console.log(cid);
+            
+            let rzedy=zawartosc.split(";");
+
+            let temp1=rzedy[i].replace("W trakcie", "Wykonano");
+
+            let niemamsilydojsa=new Array();
+
+            for(j=0;j<rzedy.length;j++){
+                if(j==i){
+                    continue;
+                }else{
+                    niemamsilydojsa.push(rzedy[j]);
+                }
+            }
+
+
+            niemamsilydojsa.push(temp1);
+
+            //console.log(niemamsilydojsa.join(";"));
+           // localStorage.setItem("zawartosc-n", niemamsilydojsa.join(";"));
+           zawartosc=niemamsilydojsa.join(";");
+        }
+
+      // location.reload();
+    }
+
+    console.log(zawartosc);
+   
+   
+   
+    /* 
+    for(i=1,j=0;i<rows,j<rows;i++,j++){
         let cid="c-"+i;
         console.log(cid);
         if(document.getElementById(cid)){
@@ -109,9 +148,18 @@ function wykonaj(){
             cell.innerHTML="Wykonane";
             continue;
             */
+            /*
             console.log("obrot nr"+i);
             let zawartosc=localStorage.getItem("zawartosc");
             let array=zawartosc.split(";");
+            
+            array[j]=array[j].replace("W trakcie", "Wykonano");
+            array.push(array.splice(j, 1)[0]);
+            let dozapisu=array.join(";");
+            console.log(dozapisu);
+            localStorage.setItem("zawartosc", dozapisu);
+*/
+            /*
             let nazwa= new Array();
             for(k=0;k<array.length;k++){
                 let v=array[k].split(",");
@@ -131,10 +179,10 @@ function wykonaj(){
             localStorage.setItem("zawartosc", dozapisu);
            // document.getElementById("tr-"+j).style.opacity='30%';
             //document.getElementById("td-"+j+"-0").style.textDecoration='line-through';
-
-        }
-    }
-    }
+            */
+//}
+  //  }
+//    }
 
 
 
