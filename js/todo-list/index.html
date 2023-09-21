@@ -100,93 +100,38 @@ function wykonaj(){
 
 
 
-    console.log(rows);
+    console.log('rows', rows);
 
+    counter = 0
+    let niemamsilydojsa=new Array();
     for(i=0;i<=rows;i++){
         
         let cid="c-"+i;
-        if(document.getElementById(cid) && document.getElementById(cid).checked){
-            console.log(cid);
-            
-            let zawartosc=localStorage.getItem("zawartosc");
-            let rzedy=zawartosc.split(";");
+        let zawartosc=localStorage.getItem("zawartosc");
+        let rzedy=zawartosc.split(";");
+        if(document.getElementById(cid) != null && document.getElementById(cid).checked){
+            counter = counter + 1;
 
-            let temp1=rzedy[i].replace("W trakcie", "Wykonano");
 
-            let niemamsilydojsa=new Array();
+            console.log('Checked cid: ', cid);
+            console.log('Start', rzedy[cid.replace('c-', '')])
 
-            for(j=0;j<rzedy.length;j++){
-                if(j==i){
-                    continue;
-                }else{
-                    niemamsilydojsa.push(rzedy[j]);
-                }
-            }
-
+            let temp1=rzedy[cid.replace('c-', '')].replace("W trakcie", "Wykonano");
 
             niemamsilydojsa.push(temp1);
 
-            //console.log(niemamsilydojsa.join(";"));
-           localStorage.setItem("zawartosc", niemamsilydojsa.join(";"));
-        }
-
-       location.reload();
-    }
-
-   
-   
-   
-    /* 
-    for(i=1,j=0;i<rows,j<rows;i++,j++){
-        let cid="c-"+i;
-        console.log(cid);
-        if(document.getElementById(cid)){
-        let checkbox=document.getElementById(cid).checked;
-        if(checkbox){
-            /*let row=tabela.rows[i];
-            let cell=row.cells[2];
-            cell.innerHTML="Wykonane";
-            continue;
-            */
-            /*
-            console.log("obrot nr"+i);
-            let zawartosc=localStorage.getItem("zawartosc");
-            let array=zawartosc.split(";");
-            
-            array[j]=array[j].replace("W trakcie", "Wykonano");
-            array.push(array.splice(j, 1)[0]);
-            let dozapisu=array.join(";");
-            console.log(dozapisu);
-            localStorage.setItem("zawartosc", dozapisu);
-*/
-            /*
-            let nazwa= new Array();
-            for(k=0;k<array.length;k++){
-                let v=array[k].split(",");
-                nazwa[k]=v;
-            }
-            console.log(nazwa);
-            nazwa[j][2]="Wykonano";
-            console.log(nazwa);
-
+            console.log('End', niemamsilydojsa[cid.replace('c-', '')]);
            
-            for(o=0;o<nazwa.length;o++){
-                nazwa[o]=nazwa[o].join(",");
-            }
-            nazwa.push(nazwa.splice(j, 1)[0]);
-            let dozapisu=nazwa.join(";");
-            console.log(dozapisu);
-            localStorage.setItem("zawartosc", dozapisu);
-           // document.getElementById("tr-"+j).style.opacity='30%';
-            //document.getElementById("td-"+j+"-0").style.textDecoration='line-through';
-            */
-//}
-  //  }
-//    }
 
-
-
-   // location.reload();
+        }else {
+            niemamsilydojsa.push(rzedy[i]);
+        }
+       
+    }
+    if (counter > 0) {
+        localStorage.setItem("zawartosc", niemamsilydojsa.join(";"));
+        location.reload();
+    }
 }
 
 
