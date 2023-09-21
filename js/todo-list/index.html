@@ -98,15 +98,17 @@ function wykonaj(){
     let tabela = document.getElementById('zawartosc-t');
     rows=rows-2;
 
-    let zawartosc=localStorage.getItem("zawartosc");
+
 
     console.log(rows);
 
     for(i=0;i<=rows;i++){
+        
         let cid="c-"+i;
         if(document.getElementById(cid) && document.getElementById(cid).checked){
             console.log(cid);
             
+            let zawartosc=localStorage.getItem("zawartosc");
             let rzedy=zawartosc.split(";");
 
             let temp1=rzedy[i].replace("W trakcie", "Wykonano");
@@ -125,14 +127,12 @@ function wykonaj(){
             niemamsilydojsa.push(temp1);
 
             //console.log(niemamsilydojsa.join(";"));
-           // localStorage.setItem("zawartosc-n", niemamsilydojsa.join(";"));
-           zawartosc=niemamsilydojsa.join(";");
+           localStorage.setItem("zawartosc", niemamsilydojsa.join(";"));
         }
 
-      // location.reload();
+       location.reload();
     }
 
-    console.log(zawartosc);
    
    
    
