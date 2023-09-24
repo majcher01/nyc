@@ -132,8 +132,32 @@
     width:180px;
   }
 
+.aktywnalista{
+      background: #535353;
+    border: 2px solid #535353;
+    border-radius: 8px;
+    width: 170px;
+    height: 30px;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
 
+.innalista{
+      background: transparent;
+    border: 2px solid #535353;
+    border-radius: 8px;
+    width: 170px;
+    height: 30px;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
 
+.innalista:hover{
+  background-color: #535353;
+  transition-duration: 0.3s;
+}
 
 
     </style>
@@ -149,8 +173,7 @@
         <div style="border-radius:15px; height: 600px; background-color: #313131; color: white;">
             <div class="clewy">
                 <div style="padding:15px;">
-                    
-                    w przyszłości moze bedzie opcja dodawania wiekszej ilosci list
+                 <p id="dostepnelisty"></p>   
                 </div>
             </div>
             <div class="cprawy">
@@ -180,13 +203,30 @@
     </div>
 
     <!-- The Modal -->
+<div id="myModal2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" id="close-2">&times;</span>
+     <div style="display: flex; justify-content:center;"> 
+    <p style="text-align: left;">
+        Nazwa: &nbsp;&nbsp;&nbsp;<input type="text" id="nowalistaname" class="inputstyle"><br><br>
+        <span style="padding-left: 90px;">
+        <button class='dodajbtn' onclick="dodajliste()" style="height: 70px"><span class='material-symbols-outlined' style='display:block;margin-bottom:10px;'>add_circle</span><span style='font-size:18px;'>Potwierdź<span></button>
+        </span>
+    </p>
+    </div>
+    </div>
+  
+  </div>
+    <!-- The Modal -->
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close">&times;</span>
-      
-    <p style="text-align: left; padding-left:40px;">
+      <span class="close" id="close-1">&times;</span>
+     <div style="display: flex; justify-content:center;"> 
+    <p style="text-align: left;">
         Treść: &nbsp;&nbsp;&nbsp;<input type="text" id="nowyelement" class="inputstyle"><br><br>
         Termin: <input type="datetime-local" id="nowydata" class="inputstyle"><br><br>
         <span style="padding-left: 90px;">
@@ -194,21 +234,52 @@
         </span>
     </p>
     </div>
+    </div>
   
   </div>
 <script>
-let zawartosc=localStorage.getItem("zawartosc");
+
+if (localStorage.getItem('listy') === null) {
+    localStorage.setItem("listy", "domyslna");
+    window.location.replace("./index.html?lista=domyslna");
+}
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+if(!urlParams.has('lista')){
+    window.location.replace("./index.html?lista=domyslna");
+    //console.log("NIE MA PARAMETRA");
+}
+const lista = urlParams.get('lista')
+console.log(lista);
+
+
+let dlisty=localStorage.getItem("listy");
+let dlisty2=dlisty.split(";");
+
+for(i=0;i<dlisty2.length;i++){
+  if(dlisty2[i]==lista){
+  document.getElementById("dostepnelisty").innerHTML+="<button class='aktywnalista'>"+dlisty2[i]+"</button><br>";
+  }else{
+  document.getElementById("dostepnelisty").innerHTML+="<a href='./index.html?lista="+dlisty2[i]+"'><button class='innalista'>"+dlisty2[i]+"</button></a><br>";
+  }
+}
+
+  document.getElementById("dostepnelisty").innerHTML+="<button class='innalista' id='dodajlistebtn'> <span class='material-symbols-outlined' style='display:block;margin-bottom:10px;'>add_circle</span></button>";
+
+
+
+let zawartosc=localStorage.getItem(lista);
 
 //console.log(zawartosc);
 //localStorage.setItem("zawartosc", dupa);
 
 if(zawartosc==""){
-    localStorage.removeItem("zawartosc");
+    localStorage.removeItem(lista);
     location.reload();
 }
 
 if(zawartosc==null){
-    document.getElementById('zawartosc-p').innerHTML="Lista jest pusta, dodaj element<br><br><button class='dodajbtn' id='myBtn'><span class='material-symbols-outlined' style='display:block;margin-bottom:10px;'>add_circle</span><span style='font-size:18px;'>Dodaj</span></button>";
+    document.getElementById('zawartosc-p').innerHTML="Lista jest pusta, dodaj element<br><br><button class='dodajbtn' id='myBtn'><span class='material-symbols-outlined' style='display:block;margin-bottom:10px;'>add_circle</span><span style='font-size:18px;'>Dodaj</span></button><br><br><button class='dodajbtn' id='ulista' onclick='usunliste()'><span class='material-symbols-outlined' style='display:block;margin-bottom:10px;'>delete</span><span style='font-size:18px;'>Usuń listę</span></button>";
     document.getElementById('zawartosc-t').style.display='none';
 }else{
     let tekst=zawartosc.split(";");
@@ -242,6 +313,26 @@ if(zawartosc==null){
     
 }
 
+function dodajliste(){
+
+    let nazwa=document.getElementById('nowalistaname').value;
+    console.log(nazwa);
+    let nowazmenna=dlisty+";"+nazwa;
+    localStorage.setItem("listy", nowazmenna);
+    location.reload();
+}
+
+
+function usunliste(){
+  if(lista=="domyslna"){
+    alert("nie mozesz usunac domyslnej listy");
+    return false;
+  }
+  localStorage.removeItem(lista);
+  let nlisty=dlisty.replace(";"+lista, "");
+  localStorage.setItem("listy", nlisty);
+    window.location.replace("./index.html?lista=domyslna");
+}
 
 function wykonaj(){
     var rows = document.getElementById("zawartosc-t").rows.length;
@@ -257,7 +348,7 @@ function wykonaj(){
     for(i=0;i<=rows;i++){
         
         let cid="c-"+i;
-        let zawartosc=localStorage.getItem("zawartosc");
+        let zawartosc=localStorage.getItem(lista);
         let rzedy=zawartosc.split(";");
         if(document.getElementById(cid) != null && document.getElementById(cid).checked){
             counter = counter + 1;
@@ -279,18 +370,18 @@ function wykonaj(){
        
     }
     if (counter > 0) {
-        localStorage.setItem("zawartosc", niemamsilydojsa.join(";"));
+        localStorage.setItem(lista, niemamsilydojsa.join(";"));
         location.reload();
     }
 }
 
 
 function usun(rid){
-    let zawartosc=localStorage.getItem("zawartosc");
+    let zawartosc=localStorage.getItem(lista);
     let array=zawartosc.split(";");
     array.splice(rid, 1);
     let zapis=array.join(";");
-    localStorage.setItem("zawartosc", zapis);
+    localStorage.setItem(lista, zapis);
     location.reload();
 }
 
@@ -300,14 +391,15 @@ function dodajf(){
     if(tresc=="" || nowydata==""){alert("Wprowadź treść i termin"); return false;}
     if(zawartosc==null){
         let dodaj=tresc+","+nowydata+","+"W trakcie";
-    localStorage.setItem("zawartosc", dodaj);
+    localStorage.setItem(lista, dodaj);
     }else{
         let dodaj=tresc+","+nowydata+","+"W trakcie;"+zawartosc;
-    localStorage.setItem("zawartosc", dodaj);
+    localStorage.setItem(lista, dodaj);
     }
    location.reload(); 
 
 }
+
 
 
 
@@ -319,7 +411,7 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementById("close-1");
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
@@ -338,7 +430,31 @@ window.onclick = function(event) {
   }
 }
 
+// Get the modal
+var modal2 = document.getElementById("myModal2");
 
+// Get the button that opens the modal
+var btn2 = document.getElementById("dodajlistebtn");
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementById("close-2");
+
+// When the user clicks the button, open the modal 
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
 </script>
 </body>
 </html>
