@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+Nazwa uzytkownika:
+<bR>
+5-15 znakow
+<br>
+<input type="text" id="nazwauzytkownika">
+<br>
+Adres email:
+<br>
+<input type="email" id="adresemail">
+<br>
+Haslo:
+<br>
+musi zawierac minimum 8 znakow w tym jedna liczbe i jedna duza litere.
+<br>
+<input type="password" id="haslo">
+<br><Br>
+<button id="sbtn">Sprawdz</button>
+<br>
+<div id="errormsg" style="color: red;"></div>
+<div id="successmsg" style="color: green;"></div>
+
+
+
+
+<script>
+$(document).ready(function() {
+
+    function checklength(data, min, max){
+        if(data.length>=min&&data.length<=max){
+            return true;
+        }else{
+        return false;
+        }
+    }
+
+    function checkemail(email){
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if(!regex.test(email)) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
+
+
+
+    $('#sbtn').click(function(){
+        var errormsg=$('#errormsg');
+        $('#successmsg').empty();
+        errormsg.empty();
+        var nazwauzytkownika=$('#nazwauzytkownika').val();
+        var adresemail=$('#adresemail').val();
+        var haslo=$('#haslo').val();
+
+        if(!nazwauzytkownika || !adresemail || !haslo){
+            errormsg.html("Wprowadz dane do wszystkich pol!");
+            return false;
+        }else{
+            if(!checklength(nazwauzytkownika, 5, 15)){
+                errormsg.html("Nazwa uzytkownika sie nie zgadza!");
+                return false;
+            }
+
+            if(!checkemail(adresemail)){
+                errormsg.html("Adres email nie jest poprawny!");
+                return false;
+            }
+            if(!checklength(haslo, 8, 100)){
+                errormsg.html('Haslo jest za krotkie!');
+                return false;
+            }
+
+            var regexpass=/^(?=.*[A-Z])(?=.*[0-9]).*$/;
+            if(!regexpass.test(haslo)){
+                errormsg.html('Haslo nie spelnia wymagan zlozonosci!');
+                return false;
+            }
+
+            $('#successmsg').html("Wszystko sie zgadza!");
+        }
+
+//        console.log(checklength(nazwauzytkownika, 5, 15));
+  //      console.log("email res: "+checkemail(adresemail));
+
+
+
+    })
+});
+</script>
+
+</body>
+</html>
