@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slowa</title>
+    <script src="slowa.js"></script>
+    <script src="nowe.js"></script>
+</head>
+<body>
+<h2>5.1</h2>
+<div id="51"></div>
+<h2>5.2</h2>
+<div id="52"></div>
+odwrocone:
+<br>
+<div id="522"></div>
+
+
+<script>
+    let slowaar=slowa.split("\n").map((e)=> e.trim());
+    let nowear=nowe.split("\n").map((e)=> e.trim());
+    console.log(slowaar[1]);
+    console.log(slowaar[1].length);
+    var dlugoscislowa=slowaar.map(s=>s.length);
+    console.log(slowaar);
+    console.log(dlugoscislowa);
+
+    function elementCount(arr, element){
+        return dlugoscislowa.reduce((currentElement, arrElement) =>
+            (arrElement == element ? currentElement + 1 : currentElement), 0);
+    };
+
+    function elementCount2(arr, element){
+        return slowaar.reduce((currentElement, arrElement) =>
+            (arrElement == element ? currentElement + 1 : currentElement), 0);
+    };
+    for(i=1;i<13;i++){
+        document.getElementById("51").innerHTML+="n="+i+"wyrazy o dlugosci n="+elementCount(dlugoscislowa,i)+"<br>";
+    }
+
+    /*for(i=0;i<nowear.length;i++){
+        document.getElementById("52").innerHTML+="wystapienia "+nowear[i]+" w slowa.txt= "+elementCount2(slowaar,toString(nowear[i]))+"<br>";
+
+    }*/
+    function reverseString(str) {
+        return str.split("").reverse().join("");
+    }
+
+    for(i=0;i<nowear.length;i++){
+        var l=elementCount2(slowaar, nowear[i]);
+        var f=elementCount2(slowaar, reverseString(nowear[i]));
+        document.getElementById("52").innerHTML+="wystapienia <samp>"+nowear[i]+"</samp> w slowa.txt= "+l+"<bR>";
+        document.getElementById("522").innerHTML+="wystapienia <samp>"+reverseString(nowear[i])+"</samp> w slowa.txt= "+f+"<bR>";
+
+
+    }
+
+
+</script>
+</body>
+</html>
