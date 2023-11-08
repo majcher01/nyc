@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    n:<input type="number" id="n"><br>
+    k:<input type="number" id="k"><br>
+    Dzialanie: <select id="dzialanie">
+    <option value="permutacje">permutacje</option>
+    <option value="kombinacje">kombinacje</option>
+    <option value="wbp">wariacje bez powtorzen</option>
+    <option value="wzp">wariacje z powtorzeniami</option>
+</select>
+<br>
+<button onclick="policz()">Policz</button>
+
+<br><br>
+
+<span id="wynik"></span>
+
+
+    <script>
+
+        function factorial(num) {
+  if (num <= 1) {
+    return 1;
+  }
+  let acc = 1; // skrót od accumulator
+  for (var i = 2; i <= num; i++) {
+    acc *= i; // lub acc = acc * i
+  }
+  return acc;
+}
+
+function policz(){
+
+    let n=document.getElementById("n").value;
+    let k=document.getElementById("k").value;
+    let dzialanie=document.getElementById("dzialanie").value;
+switch(dzialanie){
+    case "permutacje":
+    document.getElementById("wynik").innerHTML="Wynik to: "+factorial(n);
+    break;
+    case "kombinacje":
+    let t1=factorial(n);
+    let t2=factorial(k)*factorial((n-k));
+    document.getElementById("wynik").innerHTML="Wynik to: "+(t1/t2);
+
+    break;
+    case "wbp": 
+
+    break;
+    case "wzp": 
+
+    break;
+}
+}
+
+
+    </script>
+</body>
+</html>
