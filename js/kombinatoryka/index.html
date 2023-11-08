@@ -52,10 +52,14 @@ switch(dzialanie){
 
     break;
     case "wbp": 
+    let l1=factorial(n);
+    let l2=factorial(n-k);
+    document.getElementById("wynik").innerHTML="Wynik to: "+(l1/l2);
 
     break;
     case "wzp": 
 
+    document.getElementById("wynik").innerHTML="Wynik to: "+n**k;
     break;
 }
 }
