@@ -41,6 +41,10 @@ function policz(){
     let n=document.getElementById("n").value;
     let k=document.getElementById("k").value;
     let dzialanie=document.getElementById("dzialanie").value;
+    if(dzialanie!="permutacje" && k==''){
+        alert("wprowadz wszystkie dane!");
+        return false;
+    }
 switch(dzialanie){
     case "permutacje":
     document.getElementById("wynik").innerHTML="Wynik to: "+factorial(n);
