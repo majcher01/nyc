@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Liczba:<input type="number" id="liczba"><br>
+    <button onclick="policz()">Policz</button>
+
+    <br><br>
+    <span id="wynik"></span>
+
+
+    <script>
+
+        function policz() {
+            let liczba=Number(document.getElementById("liczba").value);
+let dzielnik=2;
+let t1=0;
+let wynik=new Array();
+            while(true){
+                t1=liczba%dzielnik;
+                if(t1==0){
+                    liczba=liczba/dzielnik;
+                    wynik.push(dzielnik);
+                    if(liczba==1){
+                        break;
+                    }
+                }else if(t1!=0){
+                    dzielnik=dzielnik+1
+                }
+            }
+            document.getElementById("wynik").innerHTML="Wynik: "+wynik.join(", ");
+        }
+    </script>
+</body>
+</html>
