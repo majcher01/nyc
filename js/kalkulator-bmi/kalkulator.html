@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            height:100%;
+        }
+        body{
+            margin: 0px 0px 0px 0px;
+            height:100%
+        }
+        .flex{
+            display:flex;
+            justify-content: center;
+        }
+        .h1{
+            background-color: #00ace0;
+        }
+        .btn{
+            background-color: transparent;
+            width: 100%;
+            height: 50px;
+            border: 1px solid black;
+        }
+        .btn:hover{
+            background-color: white;
+            transition-duration: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex h1" style="height:10%;"><h2>Sprawdz BMI</h2></div>
+    <div style="height:80%; display:flex; flex-direction: row; justify-content: flex-start;">
+        <span style="width:20%; height:100%" class="h1">
+            <a href="index.html"><button class="btn">BMI</button></a><Br>
+            <a href="kalkulator.html"><button class="btn">KALKULATOR</button></a>
+        </span>
+        <span style="width:80%; height:100%; display: flex; justify-content: center;padding-top: 30px;">
+            <span>
+                Waga [kg]:<br>
+                <input type="number" id="waga"><br><bR>
+                    Wzrost [cm]:<br>
+                    <input type="number" id="wzrost"><br>
+                    <button onclick="policz()">Oblicz</button>
+                    <br><br>
+
+                    <span id="wynik"></span>
+            </span>
+        </span>
+        
+    </div>
+        <div class="h1" style="height: 10%;">
+            Autor strony: NumerPESELalbocokolwiekinnegocowymagaja
+        </div>
+
+        <script>
+           function policz(){
+                let waga=Number(document.getElementById("waga").value);
+                let wzrost=Number(document.getElementById("wzrost").value);
+
+                if(waga=="" || wzrost==""){
+                    alert("Wprowadz wszystkie dane");
+                    return false;
+                }
+
+                let bmi=waga/((wzrost/100)**2);
+                let result="";
+                let color="red";
+                switch(true)
+    {
+      case (bmi < 18.5):
+      result="Niedowaga";
+      break;
+      case ((bmi >= 18.5) && (bmi <= 24.9)):
+      result="Norma";
+      color='green';
+      break;
+      case ((bmi >= 25) && (bmi <= 29.9)):
+      result="Otyłość 1st."
+      break;
+      case ((bmi >= 30) && (bmi <= 39.9)):
+      result="Otyłość 2st."
+      break;
+      case (bmi > 39.9):
+      result="Otyłość 3st.";
+      break;
+
+    }
+    document.getElementById("wynik").innerHTML="<span style='color:"+color+"'>Twoj wynik to: "+result+"</span>";
+            }
+        </script>
+</body>
+</html>
