@@ -7,8 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    
-
+   Liczba 1: <input type="number" id="l1"><br>
+   Liczba 2: <input type="number" id="l2"><br>
+   Dzialanie: <select id="dzialanie">
+    <option value="dodaj">dodawanie</option>
+    <option value="odejmij">odejmowanie</option>
+    <option value="pomnoz">mnozenie</option>
+    <option value="podziel">dzielenie</option>
+   </select><bR>
+    <button onclick="run()">Policz</button>
+    <br><br>
+    Wynik: <span id="wynik"></span>
 
 
     <script>
@@ -17,24 +26,46 @@
 
 
         class calc{
-                policz(func, l1, l2){
-                    
-                    switch(func){
+
+                dodaj(l1, l2){
+                    return l1+l2;
+                }
+                odejmij(l1, l2){
+                    return l1-l2;
+                }
+                pomnoz(l1, l2){
+                    return l1*l2;
+                }
+                podziel(l1, l2){
+                    return l1/l2;
+                }
+        }
+
+
+
+        function run(){
+            let l1=Number(document.getElementById("l1").value);
+            let l2=Number(document.getElementById("l2").value);
+            let dzialanie=document.getElementById("dzialanie").value;
+
+
+
+            const xd=new calc();
+                    switch(dzialanie){
                         case "dodaj":
-                            return l1+l2;
+                            document.getElementById("wynik").innerHTML=xd.dodaj(l1,l2);
                         break;
                         case "odejmij":
-                            return l1-l2;
+                            document.getElementById("wynik").innerHTML=xd.odejmij(l1,l2);
                         break;
                         case "pomnoz": 
-                            return l1*l2;
+                            document.getElementById("wynik").innerHTML=xd.pomnoz(l1,l2);
                         break;
                         case "podziel": 
-                            return l1/l2;
+                            document.getElementById("wynik").innerHTML=xd.podziel(l1,l2);
                         break;
                     }
-                    
-                }
+
         }
     </script>
 </body>
