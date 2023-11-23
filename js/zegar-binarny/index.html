@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zegar</title>
+</head>
+<body>
+   <span>h:&nbsp;</span><span id="h"></span><br>
+   <span>m:&nbsp;</span><span id="m"></span><br>
+   <span>s:&nbsp;</span><span id="s"></span><br>
+
+   <script>
+
+    function tobinary(d){
+        var x=[];
+        while(d!=0){
+            var t=d%2;
+            if(t==0){
+                d=d/2;
+                x.push(t);
+            }else{
+                d=(d-1)/2
+                x.push(t);
+            }
+
+        }
+
+        x.reverse();
+        return x;
+    }
+
+setInterval(() => {
+const d=new Date();
+
+var h=d.getHours();
+var m=d.getMinutes();
+var s=d.getSeconds();
+
+document.getElementById("h").innerHTML=tobinary(h).join('');
+document.getElementById("m").innerHTML=tobinary(m).join('');
+document.getElementById("s").innerHTML=tobinary(s).join('');
+
+}, 1000);
+   </script>
+</body>
+</html>
