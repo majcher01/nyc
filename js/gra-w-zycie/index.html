@@ -18,7 +18,7 @@
     <script>
 
     let data2=data.split("\n").map((e)=> e.trim());
-    console.log(data2);
+    //console.log(data2);
     let pokolenie1=[];
 
     for(i=0;i<data2.length;i++){
@@ -34,7 +34,7 @@
         pokolenie1.push(wiersz);
     }
 
-    console.log(pokolenie1);
+    //console.log(pokolenie1);
 
 
         //console.log(tymczasowa);
@@ -46,7 +46,7 @@
         
 
 
-        for(i=0;i<(wybranepokolenie);i++){//ta obraca sie tyle ile pokolen poda user
+        for(i=0;i<(wybranepokolenie-1);i++){//ta obraca sie tyle ile pokolen poda user
 
         let tymczasowa=[
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -84,11 +84,11 @@
                     if((y+1)>(pokolenie1[0].length-1)){ sasiadprawo=0}else{ sasiadprawo=y+1}
 
                     suma=pokolenie1[sasiadgora][sasiadlewo]+pokolenie1[sasiadgora][y]+pokolenie1[sasiadgora][sasiadprawo]+pokolenie1[x][sasiadlewo]+pokolenie1[x][sasiadprawo]+pokolenie1[sasiaddol][sasiadlewo]+pokolenie1[sasiaddol][y]+pokolenie1[sasiaddol][sasiadprawo];
-                    console.log("wspolrzedne: "+x+":"+y+"suma: "+suma);
-                    console.log(sasiaddol);
-                    console.log(sasiadgora);
-                    console.log(sasiadlewo);
-                    console.log(sasiadprawo);
+                    //console.log("wspolrzedne: "+x+":"+y+"suma: "+suma);
+                   // console.log(sasiaddol);
+                  //  console.log(sasiadgora);
+                   // console.log(sasiadlewo);
+                 //   console.log(sasiadprawo);
 
                     
 
@@ -96,7 +96,7 @@
 
 
 
-                    document.getElementById('dupa').innerHTML+=pokolenie1[x][y];
+                    //document.getElementById('dupa').innerHTML+=pokolenie1[x][y];
 
                     /*
                     if(pokolenie1[x][y]==0 && suma==3){
@@ -131,14 +131,15 @@
                         }
                     }
                 }
-                document.getElementById('dupa').innerHTML+='<br>';
+               // document.getElementById('dupa').innerHTML+='<br>';
             }
             //console.log(wspolrzednex);
 
-            console.log(tymczasowa);
+           // console.log(tymczasowa);
             pokolenie1=tymczasowa;
         }
 
+        console.log(pokolenie1);
 
        /* console.log("po zmianach");
         console.log(tymczasowa);*/
