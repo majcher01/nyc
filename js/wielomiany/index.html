@@ -7,7 +7,49 @@
 </head>
 <body>
   
+<div>Wprowadz wielomian w formacie: <samp>2x^3+0.5x^2-0.25x+4</samp></div>
+Wielomian: <input type="text" id="inputwielomian">
+<br>
+Wartosc: <input type="number" id="wartosc">
+<button onclick="policz()">Wykonaj</button>
 
-  
+<script>
+
+  function policz(){
+
+    let wielomian=document.getElementById('inputwielomian').value;
+
+    let wielomiantab=wielomian.split('+');
+    let stopien=wielomiantab[0].slice(-1);
+    let wspolczynniki=[];
+
+    console.log(stopien);
+    console.log(wielomiantab);
+
+    for(i=0;i<wielomiantab.length;i++){
+      if(wielomiantab[i]!='x' && wielomiantab[i].includes('x') ){
+      wspolczynniki.push( Number(wielomiantab[i].substring(0, wielomiantab[i].indexOf('x'))) );
+      }else if(wielomiantab[i]=='x'){
+        wspolczynniki.push(1);
+      }else {
+        wspolczynniki.push( Number(wielomiantab[i]) );
+      }
+    }
+
+    console.log(wspolczynniki);
+
+
+    let wynik = wspolczynniki[0];
+    let wartosc=Number(document.getElementById('wartosc').value);
+
+    for(a=0;a<=stopien;a++){
+      wynik=wynik*wartosc+wspolczynniki[a];
+    }
+
+    console.log("w: "+wynik);
+
+  }
+</script>
+
 </body>
 </html>
