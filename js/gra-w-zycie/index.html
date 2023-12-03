@@ -12,7 +12,9 @@
     <br>
     <button onclick="policzpokolenie()">Wykonaj</button>
 
-    <div id="dupa"></div>
+    <div id="czysieustalilo"></div>
+    <div id="wynik"></div>
+    <div id="ilezywe"></div>
 
 
     <script>
@@ -40,6 +42,17 @@
         //console.log(tymczasowa);
 
     function policzpokolenie(){
+
+        //check czy byl odpalany juz
+
+        if(document.getElementById('wynik').innerHTML!=''){
+            if(confirm('musisz odswiezyc strone, chcesz to zrobic?')==true){
+                location.reload();
+            }else{
+                return 0;
+            }
+        }
+
         let wybranepokolenie=Number(document.getElementById('wybranepokolenie').value);
         //let niemogeztymbadziewiem=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         
@@ -47,7 +60,6 @@
 
 
         for(i=0;i<(wybranepokolenie-1);i++){//ta obraca sie tyle ile pokolen poda user
-
         let tymczasowa=[
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -96,7 +108,7 @@
 
 
 
-                    //document.getElementById('dupa').innerHTML+=pokolenie1[x][y];
+                    //document.getElementById('wynik').innerHTML+=pokolenie1[x][y];
 
                     /*
                     if(pokolenie1[x][y]==0 && suma==3){
@@ -115,7 +127,6 @@
                     }*/
 
 
-
                     
                     if(pokolenie1[x][y]==1){
                         if(suma==2){
@@ -131,15 +142,49 @@
                         }
                     }
                 }
-               // document.getElementById('dupa').innerHTML+='<br>';
+               // document.getElementById('wynik').innerHTML+='<br>';
             }
             //console.log(wspolrzednex);
 
            // console.log(tymczasowa);
+
+            if(tymczasowa.join()==pokolenie1.join()){
+
+                if(document.getElementById('czysieustalilo').innerHTML==''){
+                document.getElementById('czysieustalilo').innerHTML='ustalilo sie w '+(i+2)+' pokoleniu';
+                }
+            }
+
             pokolenie1=tymczasowa;
+
         }
 
         console.log(pokolenie1);
+   
+            let content="<table>"; 
+
+            for(a=0;a<pokolenie1.length;a++){
+
+                content+="<tr>";
+
+                for(b=0;b<pokolenie1[0].length;b++){
+                    
+                    if( pokolenie1[a][b]==1 ){
+                        content+='<td>'+"X"+'</td>';
+                    }else{
+                        content+='<td>'+"."+'</td>';
+                    }
+
+                }
+
+                content+="</tr>";
+            }
+
+            content+="</table>";
+
+            document.getElementById('wynik').innerHTML=content;
+            document.getElementById('ilezywe').innerHTML='Liczba zywych w pokoleniu: '+ (pokolenie1.join()).match(/1/g).length ;
+
 
        /* console.log("po zmianach");
         console.log(tymczasowa);*/
